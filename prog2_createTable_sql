@@ -1,0 +1,25 @@
+#Create Table movies
+drop table if exists movies; 
+create table if not exists movies
+(
+movie_id integer, 
+name varchar(1000), 
+score integer
+);
+
+#Load Data
+load data local infile 'movie-name_score.txt' into table movies fields terminated by ',';
+
+#Create Table Cast
+drop table if exists cast; 
+create table if not exists cast
+(
+movie_id integer, 
+cast_id integer, 
+cast_name varchar(1000)
+);
+
+#Load Data
+load data local infile 'movie-cast.txt' into table cast fields terminated by ',';
+
+ 
