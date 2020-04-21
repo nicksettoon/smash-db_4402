@@ -1,3 +1,0 @@
-select count(*) from movies32;
-
-select count(*) from cast32;

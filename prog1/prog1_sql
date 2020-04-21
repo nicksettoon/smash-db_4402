@@ -1,0 +1,66 @@
+#select count(*) from movies;
+#select count(*) from cast;
+
+#DESCRIBE movies;
+#DESCRIBE cast;
+
+#B
+INSERT INTO movies
+	(movie_id, name, score)
+	VALUES(54321, 'greatmovie', 5);
+
+SELECT * FROM movies
+	WHERE movie_id = 54321;
+
+#C
+UPDATE movies
+	SET name = 'goodmovie'
+	WHERE movie_id = 54321;
+
+SELECT * FROM movies
+	WHERE movie_id = 54321;
+
+#D
+DELETE FROM movies
+	WHERE movie_id=54321;
+
+SELECT * FROM movies
+	WHERE movie_id = 54321;
+
+#E
+SELECT movie_id, name FROM movies
+	WHERE name LIKE '_The Private%';
+
+#F
+SELECT * FROM movies
+	WHERE score > 80
+	ORDER BY score DESC;
+
+#G
+SELECT COUNT(*) FROM movies
+	WHERE score > 80;
+
+
+#H
+SELECT cast_id, COUNT(DISTINCT movie_id) as num_movies
+	FROM cast
+	GROUP BY cast_id 
+	ORDER BY num_movies;
+
+#I
+SELECT movie_id, COUNT(DISTINCT cast_id) as num_casts
+	FROM cast
+	GROUP BY movie_id 
+	ORDER BY num_casts;
+	
+#J
+SELECT movie_id, COUNT(DISTINCT cast_id) as num_casts
+	FROM cast
+	GROUP BY movie_id 
+	ORDER BY num_casts
+	HAVING num_casts > 30;
+
+#K
+(SELECT movie_id FROM cast WHERE cast_name = '"Tom Hanks"')
+INTERSECT
+(SELECT movie_id FROM cast WHERE cast_name = '"Brad Pitt"');
