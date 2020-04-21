@@ -1,0 +1,27 @@
+#Create Table movies
+ 
+create table movies32
+(
+movie_id integer, 
+name varchar(1000), 
+score integer
+);
+
+#Load Data
+load data local infile '~/prog3/movie-name_score.txt' into table movies32 fields terminated by ',';
+
+#Create Table Cast
+ 
+create table cast32
+(
+movie_id integer, 
+cast_id integer, 
+cast_name varchar(1000)
+);
+
+#Load Data
+load data local infile '~/prog3/movie-cast.txt' into table cast32 fields terminated by ',';
+
+select count(*) from movies32;
+
+select count(*) from cast32;
