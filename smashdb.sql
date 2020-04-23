@@ -1,8 +1,6 @@
-#CREATE FIGHTS
-
 CREATE TABLE SinglesFights
 (
-fight_id INTEGER PRIMARY KEY;
+fight_id INTEGER PRIMARY KEY,
 char1 VARCHAR(17),
 char2 VARCHAR(17),
 winner INTEGER,
@@ -12,7 +10,7 @@ set_id INTEGER
 
 CREATE TABLE SinglesSets
 (
-set_id INTEGER PRIMARY KEY;
+set_id INTEGER PRIMARY KEY,
 plyr1 INTEGER,
 plyr2 INTEGER,
 depth INTEGER,
@@ -25,7 +23,7 @@ CREATE TABLE Player
 (
 plyr_id INTEGER,
 pname   VARCHAR(50),
-main_char_id    INTEGER,
+main_cname  VARCHAR(17),
 region  VARCHAR(30)
 );
 
@@ -72,4 +70,3 @@ c2_wins     VARCHAR(17),
 total_games INTEGER,
 tier_diff INTEGER
 );
-

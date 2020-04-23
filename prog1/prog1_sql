@@ -40,7 +40,6 @@ SELECT * FROM movies
 SELECT COUNT(*) FROM movies
 	WHERE score > 80;
 
-
 #H
 SELECT cast_id, COUNT(DISTINCT movie_id) as num_movies
 	FROM cast
