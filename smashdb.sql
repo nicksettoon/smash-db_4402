@@ -63,10 +63,10 @@ tier INTEGER
 
 CREATE TABLE Matchup
 (
-c1_id INTEGER,
-c2_id INTEGER,
-c1_wins     INTEGER,
-c2_wins     INTEGER,
+c1_id VARCHAR(17),
+c2_id VARCHAR(17),
+c1_wins     VARCHAR(17),
+c2_wins     VARCHAR(17),
 total_games INTEGER,
 tier_diff INTEGER
 );
