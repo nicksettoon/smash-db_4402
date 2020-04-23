@@ -3,8 +3,8 @@
 CREATE TABLE SinglesFights
 (
 fight_id INTEGER PRIMARY KEY;
-char1 INTEGER,
-char2 INTEGER,
+char1 VARCHAR(17),
+char2 VARCHAR(17),
 winner INTEGER,
 stage INTEGER,
 set_id INTEGER
@@ -65,10 +65,10 @@ tier INTEGER
 
 CREATE TABLE Matchup
 (
-c1_id INTEGER,
-c2_id INTEGER,
-c1_wins     INTEGER,
-c2_wins     INTEGER,
+c1_id VARCHAR(17),
+c2_id VARCHAR(17),
+c1_wins     VARCHAR(17),
+c2_wins     VARCHAR(17),
 total_games INTEGER,
 tier_diff INTEGER
 );
