@@ -4,7 +4,7 @@ fight_id INTEGER PRIMARY KEY,
 char1 VARCHAR(17),
 char2 VARCHAR(17),
 winner INTEGER,
-stage INTEGER,
+stage VARCHAR(50),
 set_id INTEGER
 );
 
@@ -24,7 +24,7 @@ CREATE TABLE Player
 plyr_id INTEGER,
 pname   VARCHAR(50),
 main_cname  VARCHAR(17),
-region  INTEGER
+region  VARCHAR(30)
 );
 
 CREATE TABLE PlayerTournament
@@ -63,10 +63,10 @@ tier INTEGER
 
 CREATE TABLE Matchup
 (
-c1_id INTEGER,
-c2_id INTEGER,
-c1_wins     INTEGER,
-c2_wins     INTEGER,
+c1_id VARCHAR(17),
+c2_id VARCHAR(17),
+c1_wins     VARCHAR(17),
+c2_wins     VARCHAR(17),
 total_games INTEGER,
 tier_diff INTEGER
 );
