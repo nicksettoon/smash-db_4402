@@ -1,0 +1,25 @@
+wins/losses = total_games - c2_win
+stats_ratios
+
+
+Q1: List players ranked by tournament attendance.
+SELECT pname as Player, COUNT(*) as Tourneys
+FROM PlayerTournament NATURAL JOIN Player
+GROUP BY pname
+ORDER BY DESC;
+
+List players by the depth they were eliminated at for a given tournament.
+SELECT pname as Player, MIN(depth) as depth
+FROM SinglesSets NATURAL JOIN Tournament
+WHERE tname="Frostbite"
+GROUP BY Player
+HAVING depth > 4
+
+List characters by play rate in all tournaments.
+List players by number of set wins.
+List players by number of fight wins.
+List region by number of players from that region.
+List region by number of tourneys in that region.
+What player wins the most when their character is at disadvantage?
+Which character performs the best against others on average?
+List matchups having more than 10 games played.
