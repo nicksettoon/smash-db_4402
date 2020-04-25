@@ -7,11 +7,6 @@ SELECT pname as Player, COUNT(*) as Tourneys
     FROM PlayerTournament NATURAL JOIN Player
     GROUP BY pname
     ORDER BY Tourneys DESC;
-<<<<<<< HEAD
-=======
-
-    
->>>>>>> 86f24d5c16e1c9b2457937c0e1f09a89b0a5b48e
 
 List players by the depth they were eliminated at for a given tournament.
 SELECT pname as Player, MIN(depth) as depth, 
