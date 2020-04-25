@@ -1,69 +1,100 @@
-CREATE TABLE SinglesFight
+CREATE TABLE Character
 (
-fight_id INTEGER PRIMARY KEY,
-char1 VARCHAR(17),
-char2 VARCHAR(17),
-winner VARCHAR(7),
-stage VARCHAR(50),
-set_id INTEGER
-);
-
-CREATE TABLE SinglesSet
-(
-set_id INTEGER PRIMARY KEY,
-plyr1 VARCHAR(7),
-plyr2 VARCHAR(7),
-depth INTEGER,
-winner VARCHAR(7),
-bracket_type INTEGER,
-tname VARCHAR(50)
-);
-
-CREATE TABLE Player
-(
-pname   VARCHAR(7),
-main_cname  VARCHAR(17),
-region  VARCHAR(30)
-);
-
-CREATE TABLE PlayerTournament
-(
-    pname   VARCHAR(7),
-    tname   VARCHAR(50)
+cname    VARCHAR(17) PRIMARY KEY,
+max_air_acceleration    REAL,
+air_speed   REAL,
+fall_speed  REAL,
+gravity REAL,
+full_jump_height    REAL,
+weight  INTEGER,
+walk_speed  REAL,
+init_dash   REAL,
+run_speed   REAL,
+fastest_OOS_option  INTEGER,
+grab_speed  INTEGER
 );
 
 CREATE TABLE Tournament
 (
-tname   VARCHAR(50),
+tname   VARCHAR(50) PRIMARY KEY,
 start_date   DATE,
 end_date     DATE,
-region      VARCHAR(50),
-winner      VARCHAR(50)
+tregion      VARCHAR(50),
+twinner      VARCHAR(50),
+FOREIGN KEY (twinner)
+    REFERENCES Player (pname)
+    ON DELETE NO ACTION
 );
 
-CREATE TABLE Character
+CREATE TABLE SetSingles
 (
-cname VARCHAR(17),
-max_air_acceleration    FLOAT,
-air_speed   FLOAT,
-fall_speed  FLOAT,
-gravity FLOAT,
-full_jump_height    FLOAT,
-weight  FLOAT,
-walk_speed  FLOAT,
-init_dash   FLOAT,
-run_speed   FLOAT,
-fastest_OOS_option  FLOAT,
-grab_speed  FLOAT,
-total_wins INTEGER,
-tier INTEGER
+sid INTEGER PRIMARY KEY,
+plyr1 VARCHAR(10) NOT NULL,
+plyr2 VARCHAR(10) NOT NULL,
+depth INTEGER NOT NULL,
+swinner VARCHAR(10) NOT NULL,
+bracket VARCHAR(7) NOT NULL,
+tname VARCHAR(50) NOT NULL,
+FOREIGN KEY (tname)
+    REFERENCES Tournament (tname)
+    ON DELETE CASCADE
+FOREIGN KEY (plyr1)
+    REFERENCES Player (pname)
+    ON DELETE NO ACTION
+FOREIGN KEY (plyr2)
+    REFERENCES Player (pname)
+    ON DELETE NO ACTION
+FOREIGN KEY (swinner)
+    REFERENCES Player (pname)
+    ON DELETE NO ACTION
 );
 
-CREATE TABLE Matchup
+CREATE TABLE FightSingles
 (
-c1_id VARCHAR(17),
-c2_id VARCHAR(17),
-c1_wins     VARCHAR(17),
-c2_wins     VARCHAR(17),
-tier_diff INTEGER
+fid INTEGER PRIMARY KEY, 
+char1 VARCHAR(17) NOT NULL,
+char2 VARCHAR(17) NOT NULL,
+fwinner VARCHAR(17) NOT NULL,
+stage VARCHAR(50),
+sid INTEGER,
+FOREIGN KEY (sid)
+    REFERENCES SetSingles (sid)
+    ON DELETE CASCADE
+FOREIGN KEY (char1)
+    REFERENCES Character (cname)
+    ON DELETE NO ACTION
+FOREIGN KEY (char2)
+    REFERENCES Character (cname)
+    ON DELETE NO ACTION
+FOREIGN KEY (fwinner)
+    REFERENCES Character (cname)
+    ON DELETE NO ACTION
 );
+
+CREATE TABLE Player
+(
+pname   VARCHAR(10) PRIMARY KEY,
+main    VARCHAR(17),
+pregion  VARCHAR(30),
+FOREIGN KEY (main)
+    REFERENCES Character (cname)
+    ON DELETE NO ACTION
+);
+
+CREATE TABLE PlayerTournament
+(
+pname   VARCHAR(7),
+tname   VARCHAR(50),
+PRIMARY KEY (pname, tname),
+FOREIGN KEY (pname)
+    REFERENCES Player (pname)
+);
+
+-- CREATE TABLE Matchup
+-- (
+-- c1_id VARCHAR(17),
+-- c2_id VARCHAR(17),
+-- c1_wins     VARCHAR(17),
+-- c2_wins     VARCHAR(17),
+-- tier_diff INTEGER
+-- );
