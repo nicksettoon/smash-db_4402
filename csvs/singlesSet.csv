@@ -1,23 +1,24 @@
-1,MkLeo,Samsora,1,MkLeo,1,Super Smash Con 2019
-2,MkLeo,Samsora,2,MkLeo,1,Super Smash Con 2019
-3,Tweek,Samsora,3,Samsora,1,Super Smash Con 2019
-4,Tweek,Marss,4,Tweek,1,Super Smash Con 2019
-5,MkLeo,Samsora,5,Samsora,1,Super Smash Con 2019
-6,MkLeo,VoiD,1,MkLeo,1,GENESIS 6
-7,MkLeo,VoiD,2,MkLeo,1,GENESIS 6
-8,Samsora,VoiD,3,VoiD,1,GENESIS 6
-9,zackray,VoiD,4,VoiD,1,GENESIS 6
-10,MkLeo,Samsora,5,Samsora,1,GENESIS 6
-11,MkLeo,Samsora,1,MkLeo,1,Smash 'N' Splash 5
-12,MkLeo,Ally,2,MkLeo,1,Smash 'N' Splash 5
-13,VoiD,Ally,3,Ally,1,Smash 'N' Splash 5
-14,MkLeo,Marss,4,MkLeo,1,Smash 'N' Splash 5
-15,MkLeo,Tweek,1,Tweek,1,Frostbite 2019
-16,MkLeo,Tweek,2,Tweek,1,Frostbite 2019
-17,MkLeo,Myran,3,MkLeo,1,Frostbite 2019
-18,Cosmos,Tweek,4,Tweek,1,Frostbite 2019
-19,zackray,Dabuz,1,zackray,1,The Big House 9
-20,zackray,Dabuz,2,zackray,1,The Big House 9
-21,Maister,Dabuz,3,Dabuz,1,The Big House 9
-22,Nairo,Dabuz,4,Dabuz,1,The Big House 9
-23,zackray,Maister,5,Maister,1,The Big House 9
+plyr1,plyr2,depth,swinner,brackettype,tname
+MkLeo,Samsora,1,MkLeo,1,Super Smash Con 2019
+MkLeo,Samsora,2,MkLeo,1,Super Smash Con 2019
+Tweek,Samsora,3,Samsora,1,Super Smash Con 2019
+Tweek,Marss,4,Tweek,1,Super Smash Con 2019
+MkLeo,Samsora,5,Samsora,1,Super Smash Con 2019
+MkLeo,VoiD,1,MkLeo,1,GENESIS 6
+MkLeo,VoiD,2,MkLeo,1,GENESIS 6
+Samsora,VoiD,3,VoiD,1,GENESIS 6
+zackray,VoiD,4,VoiD,1,GENESIS 6
+MkLeo,Samsora,5,Samsora,1,GENESIS 6
+MkLeo,Samsora,1,MkLeo,1,Smash 'N' Splash 5
+MkLeo,Ally,2,MkLeo,1,Smash 'N' Splash 5
+VoiD,Ally,3,Ally,1,Smash 'N' Splash 5
+MkLeo,Marss,4,MkLeo,1,Smash 'N' Splash 5
+MkLeo,Tweek,1,Tweek,1,Frostbite 2019
+MkLeo,Tweek,2,Tweek,1,Frostbite 2019
+MkLeo,Myran,3,MkLeo,1,Frostbite 2019
+Cosmos,Tweek,4,Tweek,1,Frostbite 2019
+zackray,Dabuz,1,zackray,1,The Big House 9
+zackray,Dabuz,2,zackray,1,The Big House 9
+Maister,Dabuz,3,Dabuz,1,The Big House 9
+Nairo,Dabuz,4,Dabuz,1,The Big House 9
+zackray,Maister,5,Maister,1,The Big House 9

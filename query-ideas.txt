@@ -6,7 +6,7 @@ Q1: List players ranked by tournament attendance.
 SELECT pname as Player, COUNT(*) as Tourneys
     FROM PlayerTournament NATURAL JOIN Player
     GROUP BY pname
-    ORDER BY DESC;
+    ORDER BY Tourneys DESC;
 
 List players by the depth they were eliminated at for a given tournament.
 SELECT pname as Player, MIN(depth) as depth, 
@@ -15,7 +15,7 @@ SELECT pname as Player, MIN(depth) as depth,
     GROUP BY Player
     HAVING depth > 4;
 
-List characters by play rate in all tournaments.
+List characters by play rate in a given tournament.
 (SELECT char1 as Character, COUNT(*) as Play_rate
     FROM SinglesFight NATURAL JOIN SinglesSet NATURAL JOIN Tournament
     GROUP BY char1;)
