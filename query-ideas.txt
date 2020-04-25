@@ -36,4 +36,5 @@ SELECT *, SUM(c1_wins + c2_wins) as Total_games
     FROM Matchup
     WHERE Total_games >= 10
     ORDER BY Total_games;
+    
 COMPLEX

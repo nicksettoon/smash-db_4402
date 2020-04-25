@@ -81,12 +81,14 @@ FOREIGN KEY (main)
     ON DELETE NO ACTION
 );
 
--- CREATE TABLE PlayerTournament
--- (
--- pname   VARCHAR(7),
--- tname   VARCHAR(50),
--- PRIMARY KEY (pname, tname)
--- );
+CREATE TABLE PlayerTournament
+(
+pname   VARCHAR(7),
+tname   VARCHAR(50),
+PRIMARY KEY (pname, tname),
+FOREIGN KEY (pname)
+    REFERENCES Player (pname)
+);
 
 -- CREATE TABLE Matchup
 -- (
