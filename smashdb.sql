@@ -67,6 +67,5 @@ c1_id VARCHAR(17),
 c2_id VARCHAR(17),
 c1_wins     VARCHAR(17),
 c2_wins     VARCHAR(17),
-total_games INTEGER,
 tier_diff INTEGER
 );
