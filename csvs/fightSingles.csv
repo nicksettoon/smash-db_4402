@@ -18,77 +18,194 @@ Joker,Peach,Joker,Smashville,5
 Joker,Peach,Joker,Town & City,5
 Joker,Peach,Peach,Town & City,5
 Joker,Peach,Peach,Pokemon Stadium 2,5
-Lucina,Pichu,Lucina,Pokemon Stadium 2,6
-Lucina,Pichu,Pichu,Town & City,6
-Lucina,Pichu,Lucina,Smashville,6
-Lucina,Pichu,Lucina,Kalos,6
-Lucina,Pichu,Lucina,Pokemon Stadium 2,7
-Lucina,Pichu,Pichu,Town & City,7
-Lucina,Pichu,Lucina,Smashville,7
-Lucina,Pichu,Lucina,Smashville,7
-Peach,Pichu,Pichu,Pokemon Stadium 2,8
-Peach,Pichu,Pichu,Pokemon Stadium 2,8
-Peach,Pichu,Peach,Final Destination,8
-Peach,Pichu,Pichu,Final Destination,8
-Wolf,Pichu,Wolf,Pokemon Stadium 2,9
-Wolf,Pichu,Pichu,Final Destination,9
-Wolf,Pichu,Pichu,Kalos,9
-Wolf,Pichu,Wolf,Smashville,9
-Wolf,Pichu,Pichu,Town & City,9
-Ike,Peach,Peach,Battlefield,10
-Ike,Peach,Ike,Pokemon Stadium 2,10
-Ike,Peach,Ike,Yoshi's Story,10
-Ike,Peach,Peach,Unova,10
-Ike,Peach,Peach,Town & City,10
-Joker,Peach,Joker,Pokemon Stadium,11
-Joker,Palutena,Joker,Pokemon Stadium,11
-Joker,Peach,Joker,Pokemon Stadium,11
-Joker,Snake,Joker,Smashville,12
-Joker,Snake,Joker,Town & City,12
-Joker,Snake,Snake,Town & City,12
-Joker,Snake,Joker,Battlefield,12
-Pichu,Snake,Snake,Pokemon Stadium,13
-Pichu,Snake,Snake,Town & City,13
-Joker,Snake,Joker,Town & City,13
-Joker,Snake,Snake,Pokemon Stadium,13
-Joker,Zero Suit Samus,Joker,Pokemon Stadium,14
-Joker,Zero Suit Samus,Zero Suit Samus,Battlefield,14
-Joker,Zero Suit Samus,Joker,Smashville,14
-Joker,Zero Suit Samus,Joker,Unova,14
-Lucina,Wario,Wario,Pokemon Stadium 2,15
-Lucina,Wario,Wario,Town & City,15
-Lucina,Wario,Wario,Town & City,15
-Ike,Donkey Kong,Ike,Pokemon Stadium 2,16
-Ike,Wario,Ike,Smashville,16
-Ike,Wario,Wario,Smashville,16
-Ike,Wario,Wario,Yoshi's Story,16
-Lucina,Wario,Wario,Pokemon Stadium 2,16
-Ike,Olimar,Ike,Pokemon Stadium 2,17
-Ike,Olimar,Ike,Pokemon Stadium 2,17
-Ike,Olimar,Olimar,Pokemon Stadium 2,17
-Ike,Olimar,Ike,Smashville,17
-Inkling,Wario,Inkling,Pokemon Stadium 2,18
-Inkling,Wolf,Wolf,Pokemon Stadium 2,18
-Inkling,Wolf,Wolf,Town & City,18
-Inkling,Wolf,Inkling,Town & City,18
-Inkling,Wario,Wario,Pokemon Stadium 2,18
-Rob,Rosalina & Luma,Rosalina & Luma,Final Destination,19
-Rob,Rosalina & Luma,Rob,Yoshi's Story,19
-Rob,Rosalina & Luma,Rob,Town & City,19
-Rob,Rosalina & Luma,Rob,Battlefield,19
+Joker,Pokemon Trainer,Pokemon Trainer,Town & City,6
+Joker,Pokemon Trainer,Pokemon Trainer,Town & City,6
+Joker,Pokemon Trainer,Joker,Town & City,6
+Joker,Pokemon Trainer,Joker,Town & City,6
+Joker,Pokemon Trainer,Joker,Final Destination,6
+Joker,Zero Suit Samus,Joker,Pokemon Stadium 2,7
+Joker,Zero Suit Samus,Joker,Kalos,7
+Joker,Zero Suit Samus,Joker,Yoshi's Story,7
+Mr. Game & Watch,Zero Suit Samus,Zero Suit Samus,Smashville,8
+Mr. Game & Watch,Zero Suit Samus,Mr. Game & Watch,Smashville,8
+Mr. Game & Watch,Zero Suit Samus,Zero Suit Samus,Battlefield,8
+Mr. Game & Watch,Zero Suit Samus,Zero Suit Samus,Town & City,8
+Joker,Palutena,Joker,Smashville,9
+Joker,Palutena,Palutena,Battlefield,9
+Joker,Palutena,Palutena,Town & City,9
+Joker,Palutena,Joker,Town & City,9
+Joker,Palutena,Joker,Pokemon Stadium 2,9
+Mr. Game & Watch,Fox,Mr. Game & Watch,Pokemon Stadium 2,10
+Mr. Game & Watch,Fox,Mr. Game & Watch,Lylat Cruise,10
+Mr. Game & Watch,Fox,Mr. Game & Watch,Pokemon Stadium 2,10
+Fox,Joker,Fox,Battlefield,11
+Fox,Palutena,Palutena,Town & City,11
+Falco,Palutena,Palutena,Battlefield,11
+Fox,Palutena,Palutena,Pokemon Stadium 2,11
+Lucina,Pichu,Lucina,Pokemon Stadium 2,12
+Lucina,Pichu,Pichu,Town & City,12
+Lucina,Pichu,Lucina,Smashville,12
+Lucina,Pichu,Lucina,Kalos,12
+Lucina,Pichu,Lucina,Pokemon Stadium 2,13
+Lucina,Pichu,Pichu,Town & City,13
+Lucina,Pichu,Lucina,Smashville,13
+Lucina,Pichu,Lucina,Smashville,13
+Peach,Pichu,Pichu,Pokemon Stadium 2,14
+Peach,Pichu,Pichu,Pokemon Stadium 2,14
+Peach,Pichu,Peach,Final Destination,14
+Peach,Pichu,Pichu,Final Destination,14
+Wolf,Pichu,Wolf,Pokemon Stadium 2,15
+Wolf,Pichu,Pichu,Final Destination,15
+Wolf,Pichu,Pichu,Kalos,15
+Wolf,Pichu,Wolf,Smashville,15
+Wolf,Pichu,Pichu,Town & City,15
+Ike,Peach,Peach,Battlefield,16
+Ike,Peach,Ike,Pokemon Stadium 2,16
+Ike,Peach,Ike,Yoshi's Story,16
+Ike,Peach,Peach,Unova,16
+Ike,Peach,Peach,Town & City,16
+Ike,Peach,Peach,Final Destination,17
+Ike,Peach,Ike,Pokemon Stadium 2,17
+Ike,Peach,Ike,Kalos,17
+Ike,Peach,Peach,Kalos,17
+Ike,Peach,Ike,Smashville,17
+Ike,Olimar,Ike,Pokemon Stadium 2,18
+Ike,Olimar,Ike,Town & City,18
+Ike,Olimar,Olimar,Kalos,18
+Ike,Olimar,Ike,Smashville,18
+Lucina,Fox,Lucina,Pokemon Stadium 2,19
+Lucina,Fox,Fox,Battlefield,19
+Lucina,Fox,Fox,Town & City,19
+Lucina,Fox,Lucina,Town & City,19
+Lucina,Fox,Lucina,Town & City,19
 Wolf,Olimar,Wolf,Pokemon Stadium 2,20
+Wolf,Olimar,Olimar,Pokemon Stadium 2,20
+Wolf,Olimar,Olimar,Battlefield,20
 Wolf,Olimar,Wolf,Town & City,20
-Wolf,Olimar,Wolf,Kalos,20
-Mr. Game & Watch,Olimar,Olimar,Final Destination,21
-Mr. Game & Watch,Olimar,Olimar,Town & City,21
-Mr. Game & Watch,Olimar,Mr. Game & Watch,Battlefield,21
-Mr. Game & Watch,Olimar,Mr. Game & Watch,Town & City,21
-Mr. Game & Watch,Olimar,Olimar,Pokemon Stadium 2,21
-Palutena,Olimar,Olimar,Pokemon Stadium 2,22
-Wolf,Olimar,Wolf,Battlefield,22
-Wolf,Olimar,Wolf,Town & City,22
-Wolf,Olimar,Olimar,Battlefield,22
-Palutena,Olimar,Olimar,Battlefield,22
-Corrin,Mr. Game & Watch,Mr. Game & Watch,Final Destination,23
-Corrin,Mr. Game & Watch,Mr. Game & Watch,Yoshi's Story,23
-Joker,Mr. Game & Watch,Mr. Game & Watch,Yoshi's Story,23
+Wolf,Olimar,Olimar,Smashville,20
+Pikachu,Fox,Fox,Lylat Cruise,21
+Pikachu,Fox,Fox,Kalos,21
+Pikachu,Fox,Fox,Kalos,21
+Inkling,Olimar,Olimar,Battlefield,22
+Inkling,Olimar,Inkling,Town & City,22
+Inkling,Olimar,Olimar,Unova,22
+Inkling,Olimar,Olimar,Pokemon Stadium 2,22
+Joker,Peach,Joker,Pokemon Stadium,23
+Joker,Palutena,Joker,Pokemon Stadium,23
+Joker,Peach,Joker,Pokemon Stadium,23
+Joker,Snake,Joker,Smashville,24
+Joker,Snake,Joker,Town & City,24
+Joker,Snake,Snake,Town & City,24
+Joker,Snake,Joker,Battlefield,24
+Pichu,Snake,Snake,Pokemon Stadium,25
+Pichu,Snake,Snake,Town & City,25
+Joker,Snake,Joker,Town & City,25
+Joker,Snake,Snake,Pokemon Stadium,25
+Joker,Zero Suit Samus,Joker,Pokemon Stadium,26
+Joker,Zero Suit Samus,Zero Suit Samus,Battlefield,26
+Joker,Zero Suit Samus,Joker,Smashville,26
+Joker,Zero Suit Samus,Joker,Unova,26
+Peach,Snake,Peach,Pokemon Stadium,27
+Peach,Snake,Peach,Battlefield,27
+Peach,Snake,Peach,Battlefield,27
+Peach,Zero Suit Samus,Peach,Pokemon Stadium,28
+Peach,Zero Suit Samus,Peach,Battlefield,28
+Peach,Zero Suit Samus,Peach,Battlefield,28
+Peach,Joker,Peach,Town & City,29
+Peach,Pichu,Peach,Town & City,29
+Peach,Sheik,Peach,Town & City,29
+Zero Suit Samus,Olimar,Zero Suit Samus,Pokemon Stadium,30
+Zero Suit Samus,Rosalina & Luma,Zero Suit Samus,Smashville,30
+Zero Suit Samus,Palutena,Zero Suit Samus,Town & City,30
+Lucina,Wario,Wario,Pokemon Stadium 2,31
+Lucina,Wario,Wario,Town & City,31
+Lucina,Wario,Wario,Town & City,31
+Ike,Diddy Kong,Ike,Pokemon Stadium 2,32
+Ike,Wario,Ike,Smashville,32
+Ike,Wario,Wario,Smashville,32
+Ike,Wario,Wario,Yoshi's Story,32
+Lucina,Wario,Wario,Pokemon Stadium 2,32
+Ike,Olimar,Ike,Pokemon Stadium 2,33
+Ike,Olimar,Ike,Pokemon Stadium 2,33
+Ike,Olimar,Olimar,Pokemon Stadium 2,33
+Ike,Olimar,Ike,Smashville,33
+Inkling,Wario,Inkling,Pokemon Stadium 2,34
+Inkling,Wolf,Wolf,Pokemon Stadium 2,34
+Inkling,Wolf,Wolf,Town & City,34
+Inkling,Wolf,Inkling,Town & City,34
+Inkling,Wario,Wario,Pokemon Stadium 2,34
+Lucina,Olimar,Lucina,Pokemon Stadium 2,35
+Lucina,Olimar,Lucina,Pokemon Stadium 2,35
+Lucina,Olimar,Lucina,Smashville,35
+Richter,Olimar,Richter,Smashville,36
+Richter,Olimar,Olimar,Final Destination,36
+Richter,Olimar,Richter,Smashville,36
+Richter,Olimar,Olimar,Final Destination,36
+Richter,Olimar,Olimar,Pokemon Stadium 2,36
+Olimar,Inkling,Olimar,Pokemon Stadium 2,37
+Olimar,Inkling,Olimar,Final Destination,37
+Olimar,Inkling,Olimar,Final Destination,37
+Fox,Olimar,Olimar,Pokemon Stadium 2,38
+Fox,Olimar,Fox,Pokemon Stadium 2,38
+Fox,Olimar,Fox,Smashville,38
+Fox,Olimar,Olimar,Smashville,38
+Fox,Olimar,Olimar,Pokemon Stadium 2,38
+Palutena,Olimar,Palutena,Pokemon Stadium 2,39
+Palutena,Olimar,Palutena,Pokemon Stadium 2,39
+Palutena,Olimar,Olimar,Pokemon Stadium 2,39
+Palutena,Olimar,Olimar,Smashville,39
+Palutena,Olimar,Olimar,Pokemon Stadium 2,39
+Fox,Snake,Snake,Town & City,40
+Fox,Snake,Fox,Town & City,40
+Fox,Snake,Fox,Town & City,40
+Fox,Snake,Snake,Pokemon Stadium 2,40
+Fox,Snake,Fox,Town & City,40
+Rob,Rosalina & Luma,Rosalina & Luma,Final Destination,41
+Rob,Rosalina & Luma,Rob,Yoshi's Story,41
+Rob,Rosalina & Luma,Rob,Town & City,41
+Rob,Rosalina & Luma,Rob,Battlefield,41
+Wolf,Olimar,Wolf,Pokemon Stadium 2,42
+Wolf,Olimar,Wolf,Town & City,42
+Wolf,Olimar,Wolf,Kalos,42
+Mr. Game & Watch,Olimar,Olimar,Final Destination,43
+Mr. Game & Watch,Olimar,Olimar,Town & City,43
+Mr. Game & Watch,Olimar,Mr. Game & Watch,Battlefield,43
+Mr. Game & Watch,Olimar,Mr. Game & Watch,Town & City,43
+Mr. Game & Watch,Olimar,Olimar,Pokemon Stadium 2,43
+Palutena,Olimar,Olimar,Pokemon Stadium 2,44
+Wolf,Olimar,Wolf,Battlefield,44
+Wolf,Olimar,Wolf,Town & City,44
+Wolf,Olimar,Olimar,Battlefield,44
+Palutena,Olimar,Olimar,Battlefield,44
+Corrin,Mr. Game & Watch,Mr. Game & Watch,Final Destination,45
+Corrin,Mr. Game & Watch,Mr. Game & Watch,Yoshi's Story,45
+Joker,Mr. Game & Watch,Mr. Game & Watch,Yoshi's Story,45
+Sonic,Mr. Game & Watch,Mr. Game & Watch,Final Destination,46
+Sonic,Mr. Game & Watch,Mr. Game & Watch,Town & City,46
+Joker,Mr. Game & Watch,Joker,Smashville,46
+Joker,Mr. Game & Watch,Joker,Town & City,46
+Joker,Mr. Game & Watch,Joker,Pokemon Stadium 2,46
+Wolf,Palutena,Palutena,Pokemon Stadium 2,47
+Wolf,Palutena,Wolf,Smashville,47
+Wolf,Palutena,Wolf,Town & City,47
+Wolf,Palutena,Palutena,Town & City,47
+Joker,Palutena,Joker,Smashville,47
+Peach,Diddy Kong,Peach,Pokemon Stadium 2,48
+Peach,Palutena,Palutena,Pokemon Stadium 2,48
+Peach,Palutena,Peach,Pokemon Stadium 2,48
+Peach,Palutena,Palutena,Pokemon Stadium 2,48
+Peach,Palutena,Palutena,Pokemon Stadium 2,48
+ROB,Pokemon Trainer,Pokemon Trainer,Pokemon Stadium 2,49
+ROB,Pokemon Trainer,ROB,Final Destination,49
+ROB,Young Link,ROB,Smashville,49
+ROB,Pokemon Trainer,Pokemon Trainer,Smashville,49
+ROB,Pokemon Trainer,ROB,Final Destination,49
+Peach,Pichu,Peach,Battlefield,50
+Peach,Pichu,Peach,Town & City,50
+Peach,Pichu,Pichu,Town & City,50
+Peach,Pichu,Peach,Smashville,50
+Olimar,Pokemon Trainer,Pokemon Trainer,Pokemon Stadium 2,51
+Olimar,Pokemon Trainer,Olimar,Final Destination,51
+Olimar,Pokemon Trainer,Olimar,Smashville,51
+Olimar,Wolf,Wolf,Smashville,51
+Olimar,Wolf,Wolf,Pokemon Stadium 2,51
