@@ -8,8 +8,6 @@ SELECT pname as Player, COUNT(*) as Tourneys
     GROUP BY pname
     ORDER BY Tourneys DESC;
 
-    
-
 List players by the depth they were eliminated at for a given tournament.
 SELECT pname as Player, MIN(depth) as depth, 
     FROM SinglesSets NATURAL JOIN Tournament
@@ -17,7 +15,7 @@ SELECT pname as Player, MIN(depth) as depth,
     GROUP BY Player
     HAVING depth > 4;
 
-List characters by play rate in all tournaments.
+List characters by play rate in a given tournament.
 (SELECT char1 as Character, COUNT(*) as Play_rate
     FROM SinglesFight NATURAL JOIN SinglesSet NATURAL JOIN Tournament
     GROUP BY char1;)
@@ -38,4 +36,5 @@ SELECT *, SUM(c1_wins + c2_wins) as Total_games
     FROM Matchup
     WHERE Total_games >= 10
     ORDER BY Total_games;
+    
 COMPLEX
