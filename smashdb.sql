@@ -1,4 +1,4 @@
-CREATE TABLE SinglesFights
+CREATE TABLE SinglesFight
 (
 fight_id INTEGER PRIMARY KEY,
 char1 VARCHAR(17),
@@ -8,7 +8,7 @@ stage VARCHAR(50),
 set_id INTEGER
 );
 
-CREATE TABLE SinglesSets
+CREATE TABLE SinglesSet
 (
 set_id INTEGER PRIMARY KEY,
 plyr1 VARCHAR(7),
@@ -65,6 +65,5 @@ c1_id VARCHAR(17),
 c2_id VARCHAR(17),
 c1_wins     VARCHAR(17),
 c2_wins     VARCHAR(17),
-total_games INTEGER,
 tier_diff INTEGER
 );
