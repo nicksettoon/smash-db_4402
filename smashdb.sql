@@ -1,6 +1,6 @@
 CREATE TABLE Character
 (
-cname    VARCHAR(17) NOT NULL,
+cname    VARCHAR(17) PRIMARY KEY,
 max_air_acceleration    REAL,
 air_speed   REAL,
 fall_speed  REAL,
@@ -11,8 +11,7 @@ walk_speed  REAL,
 init_dash   REAL,
 run_speed   REAL,
 fastest_OOS_option  INTEGER,
-grab_speed  INTEGER,
-PRIMARY KEY(cname)
+grab_speed  INTEGER
 );
 
 CREATE TABLE Tournament
@@ -21,20 +20,20 @@ tname   VARCHAR(50) PRIMARY KEY,
 start_date   DATE,
 end_date     DATE,
 tregion      VARCHAR(50),
-twinner      VARCHAR(50)
+twinner      VARCHAR(50),
 FOREIGN KEY (twinner)
     REFERENCES Player (pname)
     ON DELETE NO ACTION
 );
 
-CREATE TABLE SinglesSet
+CREATE TABLE SetSingles
 (
-set_id INTEGER PRIMARY KEY,
+sid INTEGER PRIMARY KEY,
 plyr1 VARCHAR(10) NOT NULL,
 plyr2 VARCHAR(10) NOT NULL,
 depth INTEGER NOT NULL,
 swinner VARCHAR(10) NOT NULL,
-brackettype INTEGER NOT NULL,
+bracket VARCHAR(7) NOT NULL,
 tname VARCHAR(50) NOT NULL,
 FOREIGN KEY (tname)
     REFERENCES Tournament (tname)
@@ -50,16 +49,16 @@ FOREIGN KEY (swinner)
     ON DELETE NO ACTION
 );
 
-CREATE TABLE SinglesFight
+CREATE TABLE FightSingles
 (
-fight_id INTEGER PRIMARY KEY, 
+fid INTEGER PRIMARY KEY, 
 char1 VARCHAR(17) NOT NULL,
 char2 VARCHAR(17) NOT NULL,
 fwinner VARCHAR(17) NOT NULL,
 stage VARCHAR(50),
-set_id INTEGER,
-FOREIGN KEY (set_id)
-    REFERENCES SinglelsSet (set_id)
+sid INTEGER,
+FOREIGN KEY (sid)
+    REFERENCES SetSingles (sid)
     ON DELETE CASCADE
 FOREIGN KEY (char1)
     REFERENCES Character (cname)
