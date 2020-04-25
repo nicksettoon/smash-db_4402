@@ -3,7 +3,7 @@ CREATE TABLE SinglesFights
 fight_id INTEGER PRIMARY KEY,
 char1 VARCHAR(17),
 char2 VARCHAR(17),
-winner VARCHAR(50),
+winner VARCHAR(7),
 stage VARCHAR(50),
 set_id INTEGER
 );
@@ -11,25 +11,25 @@ set_id INTEGER
 CREATE TABLE SinglesSets
 (
 set_id INTEGER PRIMARY KEY,
-plyr1 VARCHAR(50),
-plyr2 VARCHAR(50),
+plyr1 VARCHAR(7),
+plyr2 VARCHAR(7),
 depth INTEGER,
-winner VARCHAR(50),
+winner VARCHAR(7),
 bracket_type INTEGER,
 tname VARCHAR(50)
 );
 
 CREATE TABLE Player
 (
-pname   VARCHAR(50),
+pname   VARCHAR(7),
 main_cname  VARCHAR(17),
 region  VARCHAR(30)
 );
 
 CREATE TABLE PlayerTournament
 (
-    plyr_id INTEGER,
-    tnmt_id INTEGER
+    pname   VARCHAR(7),
+    tname   VARCHAR(50)
 );
 
 CREATE TABLE Tournament
