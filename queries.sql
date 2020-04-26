@@ -56,21 +56,25 @@ SELECT *, SUM(c1_wins + c2_wins) as Total_games
     ORDER BY Total_games;
 
 --List players by number of fight wins.
+SELECT swinner AS name, COUNT(fid) AS fight_wins
+    FROM FightSingles NATURAL INNER JOIN SetSingles
+    GROUP BY swinner
+    ORDER BY fight_wins DESC
+
 --List region by number of players from that region.
+SELECT pregion AS region, COUNT(pname) AS num_players
+    FROM Player
+    GROUP BY pregion
+    ORDER BY num_players DESC
+
 --List region by number of tourneys in that region.
---What player wins the most when their character is at disadvantage?
---Which character performs the best against others on average?
+SELECT tregion AS region, COUNT(tname) AS num_players
+    FROM Tournament
+    GROUP BY tregion
+    ORDER BY num_players DESC
 
-
-
-
-
-
-
-
-
-
- UPDATE Matchup as mu
+--List Matchups with the total fights played per matchup
+UPDATE Matchup as mu
  SET c1wins =
  (SELECT COUNT (*) as c1wins
 	FROM FightSingles as fights
