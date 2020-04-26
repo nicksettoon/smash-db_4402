@@ -1,26 +1,43 @@
-<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="/home/nick/dev/smash-db_4402/smash.db" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><current_tab id="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="95"/><column_width id="3" width="3324"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="Character"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Character" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">--List players ranked by tournament attendance.
-SELECT pname as Player, COUNT(*) as Tourneys
-    FROM PlayerTournament NATURAL JOIN Player
-    GROUP BY pname
-    ORDER BY Tourneys DESC;</sql><sql name="SQL 2">--List players by the depth they were eliminated at for a given tournament.
-SELECT pname as Player, MIN(depth) as depth, 
-    FROM SinglesSets NATURAL JOIN Tournament
-    WHERE tname=&quot;&quot;
-    GROUP BY Player
-    HAVING depth &gt; 4;</sql><sql name="SQL 3">--List characters by play rate in a given tournament.
-SELECT char1 as Character, COUNT(*) as Play_rate
-    FROM FightSingles NATURAL JOIN SetSingles NATURAL JOIN Tournament
-    GROUP BY char1
-UNION
-SELECT char2 as Character, COUNT(*) as Play_rate
-    FROM FightSingles NATURAL JOIN SetSingles NATURAL JOIN Tournament
-    GROUP BY char2;</sql><sql name="SQL 4">--List matchups having at least 10 games played.
-SELECT *, SUM(c1_wins + c2_wins) as Total_games
-    FROM Matchup
-    WHERE Total_games &gt;= 10
-    ORDER BY Total_games;</sql><sql name="SQL 5">--List players by number of set wins.
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="/home/nick/dev/smash-db_4402/smash.db" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><current_tab id="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="95"/><column_width id="3" width="3324"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="SetSingles"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Character" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="SetSingles" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths><column index="7" value="248"/></column_widths><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="Tournament" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths><column index="1" value="223"/></column_widths><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table></browse_table_settings></tab_browse><tab_sql><sql name="ETC">
 --List players by number of fight wins.
 --List region by number of players from that region.
 --List region by number of tourneys in that region.
 --What player wins the most when their character is at disadvantage?
---Which character performs the best against others on average?</sql><current_tab id="2"/></tab_sql></sqlb_project>
+--Which character performs the best against others on average?
+--List characters by play rate in a given tournament.
+</sql><sql name="Player_Attendance">--List players ranked by tournament attendance.
+SELECT pname as Player, COUNT(*) as Tourneys_attended
+    FROM PlayerTournament NATURAL JOIN Player
+    GROUP BY pname
+    ORDER BY Tourneys_attended DESC;</sql><sql name="Times_Char_Played">--Rank characters by total times played in Frostbite 2019.
+SELECT Character, sum(Play_rate) as Total_played
+FROM (SELECT char1 as Character, COUNT(*) as Play_rate
+    FROM FightSingles NATURAL JOIN SetSingles NATURAL JOIN Tournament
+	WHERE tname = &quot;Frostbite 2019&quot;
+    GROUP BY char1
+UNION
+SELECT char2 as Character, COUNT(*) as Play_rate
+    FROM FightSingles NATURAL JOIN SetSingles NATURAL JOIN Tournament
+	WHERE tname = &quot;Frostbite 2019&quot;
+    GROUP BY char2)
+GROUP BY Character
+ORDER BY Total_Played DESC;</sql><sql name="!Round_Eliminated">--Rank players by the depth they were eliminated at across all tournaments.
+SELECT pname
+    FROM SetSingles
+    GROUP BY pname;</sql><sql name="!Matchup_filter">--List matchups having at least 10 games played.
+SELECT *, SUM(c1_wins + c2_wins) as Total_games
+    FROM Matchup
+    WHERE Total_games &gt;= 10
+    ORDER BY Total_games;</sql><sql name="!Set_Wins">--List players by number of set wins.
+SELECT Plyr, sum(Play_rate) as Sets_won
+FROM (SELECT char1 as Plyr, COUNT(*) as wins
+    FROM FightSingles NATURAL JOIN SetSingles NATURAL JOIN Tournament
+	WHERE tname = &quot;Frostbite 2019&quot;
+    GROUP BY char1
+UNION
+SELECT char2 as Plyr, COUNT(*) as wins
+    FROM FightSingles NATURAL JOIN SetSingles NATURAL JOIN Tournament
+	WHERE tname = &quot;Frostbite 2019&quot;
+    GROUP BY char2)
+GROUP BY Character
+ORDER BY Total_Played DESC;</sql><current_tab id="5"/></tab_sql></sqlb_project>

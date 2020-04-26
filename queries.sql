@@ -4,21 +4,20 @@ SELECT pname as Player, COUNT(*) as Tourneys
     GROUP BY pname
     ORDER BY Tourneys DESC;
 
---List players by the depth they were eliminated at for a given tournament.
-SELECT pname as Player, MIN(depth) as depth, 
-    FROM SinglesSets NATURAL JOIN Tournament
-    WHERE tname=""
-    GROUP BY Player
-    HAVING depth > 4;
 
---List characters by play rate in a given tournament.
-SELECT char1 as Character, COUNT(*) as Play_rate
+--Rank characters by total times played in Frostbite 2019.
+SELECT Character, sum(Play_rate) as Total_Played
+FROM (SELECT char1 as Character, COUNT(*) as Play_rate
     FROM FightSingles NATURAL JOIN SetSingles NATURAL JOIN Tournament
-    GROUP BY char1:
+	WHERE tname = "Frostbite 2019"
+    GROUP BY char1
 UNION
 SELECT char2 as Character, COUNT(*) as Play_rate
     FROM FightSingles NATURAL JOIN SetSingles NATURAL JOIN Tournament
-    GROUP BY char2;
+	WHERE tname = "Frostbite 2019"
+    GROUP BY char2)
+GROUP BY Character
+ORDER BY Total_Played DESC;
 
 --List players by number of set wins.
 --List players by number of fight wins.
@@ -32,3 +31,10 @@ SELECT *, SUM(c1_wins + c2_wins) as Total_games
     FROM Matchup
     WHERE Total_games >= 10
     ORDER BY Total_games;
+
+--List players by the depth they were eliminated at for a given tournament.
+SELECT pname as Player, MIN(depth) as depth, 
+    FROM SinglesSets NATURAL JOIN Tournament
+    WHERE tname=""
+    GROUP BY Player
+    HAVING depth > 4;
