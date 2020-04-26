@@ -71,4 +71,20 @@ Select plyr2 as Player, MIN(depth) as Round_Eliminated
     ORDER BY Round_Eliminated;
 
 --What player wins the most when their character is at disadvantage?
+SELECT plyr1 as Player, COUNT(*) as WinsAtDis
+FROM(SELECT char1,char2,fwinner,plyr1,plyr2 
+FROM FightSingles NATURAL JOIN SetSingles)
+WHERE ((SELECT grab_speed FROM Character WHERE cname = char1) 
+         -(SELECT grab_speed FROM Character WHERE cname = char2))
+		 < 0
+GROUP BY plyr1
+UNION
+SELECT plyr2 as Player, COUNT(*) as WinsAtDis
+FROM(SELECT char1,char2,fwinner,plyr1,plyr2 FROM FightSingles NATURAL JOIN SetSingles)
+WHERE ((SELECT grab_speed FROM Character WHERE cname = char2) 
+         -(SELECT grab_speed FROM Character WHERE cname = char1))
+		 < 0
+GROUP BY plyr2
+ORDER BY WinsAtDis DESC;
+
 --Which character performs the best against others on average?
