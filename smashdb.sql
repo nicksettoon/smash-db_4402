@@ -90,11 +90,11 @@ FOREIGN KEY (pname)
     REFERENCES Player (pname)
 );
 
--- CREATE TABLE Matchup
--- (
--- c1_id VARCHAR(17),
--- c2_id VARCHAR(17),
--- c1_wins     VARCHAR(17),
--- c2_wins     VARCHAR(17),
--- tier_diff INTEGER
--- );
+CREATE TABLE Matchup
+(
+c1_id VARCHAR(17),
+c2_id VARCHAR(17),
+c1_wins     VARCHAR(17),
+c2_wins     VARCHAR(17),
+tier_diff INTEGER
+);

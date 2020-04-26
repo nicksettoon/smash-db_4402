@@ -39,11 +39,15 @@ LEFT JOIN
 		GROUP BY swinner) on P lyr = swinner
 ORDER BY Set_wins DESC, Plyr ASC;
 
---List players by number of fight wins.
---List region by number of players from that region.
---List region by number of tourneys in that region.
---What player wins the most when their character is at disadvantage?
---Which character performs the best against others on average?
+--Rank players by the depth they were eliminated at across all tournaments.
+SELECT plyr1 as Player, MIN(depth) as Round_Eliminated
+FROM SetSingles NATURAL JOIN Tournament
+GROUP BY Player
+UNION
+Select plyr2 as Player, MIN(depth) as Round_Eliminated
+FROM SetSingles NATURAL JOIN Tournament
+GROUP BY Player
+ORDER BY Round_Eliminated;
 
 --List matchups having at least 10 games played.
 SELECT *, SUM(c1_wins + c2_wins) as Total_games
@@ -51,9 +55,8 @@ SELECT *, SUM(c1_wins + c2_wins) as Total_games
     WHERE Total_games >= 10
     ORDER BY Total_games;
 
---List players by the depth they were eliminated at for a given tournament.
-SELECT pname as Player, MIN(depth) as depth, 
-    FROM SinglesSets NATURAL JOIN Tournament
-    WHERE tname=""
-    GROUP BY Player
-    HAVING depth > 4;
+--List players by number of fight wins.
+--List region by number of players from that region.
+--List region by number of tourneys in that region.
+--What player wins the most when their character is at disadvantage?
+--Which character performs the best against others on average?
