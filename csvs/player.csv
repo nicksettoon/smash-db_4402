@@ -1,4 +1,4 @@
-pname,main,pregion
+pname,main,pstate
 Ally,Snake,Canada
 Cosmos,Inkling,Ohio
 Dabuz,Olimar,New York
@@ -6,7 +6,7 @@ Maister,Mr. Game & Watch,Mexico
 Marss,Zero Suit Samus,Rhode Island
 MkLeo,Joker,Mexico
 Myran,Olimar,Florida
-Nairo,Palutina,New Jersey
+Nairo,Palutena,New Jersey
 Samsora,Peach,Florida
 Tweek,Wario,New Jersey
 VoiD,Sheik,California
@@ -23,7 +23,7 @@ LeoN,Bowser,New Jersey
 Dark Wizzy,Mario,New York
 Raffi-X,Rob,Massachusetts
 Glutonny,Wario,France
-Kameme,Megaman,Japan
+Kameme,Mega Man,Japan
 Tea,Pac-Man,Japan
 ProtoBanham,Lucina,Japan
 WaDi,Rob,Virginia
@@ -43,3 +43,7 @@ NAKAT,Pichu,Ohio
 Fatality,Captain Falcon,Georgia
 Hungrybox,Jigglypuff,Florida
 Prodigy,Mario,California
+Raito,Duck Hunt,Japan
+Nietono,Pichu,Japan
+Abadango,Palutena,Japan
+Mr. R,Chrom,Netherlands
