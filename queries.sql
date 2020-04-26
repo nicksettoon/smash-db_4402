@@ -70,20 +70,15 @@ Select plyr2 as Player, MIN(depth) as Round_Eliminated
     GROUP BY Player
     ORDER BY Round_Eliminated;
 
---What player wins the most when their character is at disadvantage?
-SELECT plyr1 as Player, COUNT(*) as WinsAtDis
-FROM(SELECT char1,char2,fwinner,plyr1,plyr2 
-FROM FightSingles NATURAL JOIN SetSingles)
-WHERE ((SELECT grab_speed FROM Character WHERE cname = char1) 
-         -(SELECT grab_speed FROM Character WHERE cname = char2))
-		 < 0
+--Rank players by the number of fights won when their character is at disadvantage?
+SELECT plyr1 as Player, COUNT(*) as "Wins At Disadvantage"
+FROM(SELECT char1,char2,fwinner,plyr1,plyr2 FROM FightSingles NATURAL JOIN SetSingles)
+WHERE ((SELECT tierid FROM Character WHERE cname = char1) - (SELECT tierid FROM Character WHERE cname = char2)) > 0
 GROUP BY plyr1
 UNION
 SELECT plyr2 as Player, COUNT(*) as WinsAtDis
 FROM(SELECT char1,char2,fwinner,plyr1,plyr2 FROM FightSingles NATURAL JOIN SetSingles)
-WHERE ((SELECT grab_speed FROM Character WHERE cname = char2) 
-         -(SELECT grab_speed FROM Character WHERE cname = char1))
-		 < 0
+WHERE ((SELECT tierid FROM Character WHERE cname = char1) - (SELECT tierid FROM Character WHERE cname = char2)) < 0
 GROUP BY plyr2
 ORDER BY WinsAtDis DESC;
 
