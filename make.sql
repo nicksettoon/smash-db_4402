@@ -26,6 +26,10 @@ INSERT INTO FightSingles (char1,char2,fwinner,stage,sid) SELECT * FROM ftemp;
 .import csvs/playerTournament.csv PTtemp
 INSERT INTO PlayerTournament (pname,tname) SELECT * FROM PTtemp;
 
+--Fill Matchup Table
+INSERT INTO Matchup (c1name,c2name) SELECT c1.cname as Fighter, c2.cname as Opponent
+FROM Character as c1, Character as c2;
+
 --Update Matchup Table
 UPDATE Matchup as mu
  SET c1wins =
