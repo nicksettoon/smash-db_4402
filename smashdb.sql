@@ -92,9 +92,8 @@ FOREIGN KEY (pname)
 
 CREATE TABLE Matchup
 (
-c1_id VARCHAR(17),
-c2_id VARCHAR(17),
-c1_wins     VARCHAR(17),
-c2_wins     VARCHAR(17),
-tier_diff INTEGER
+c1name  VARCHAR(17),
+c2name  VARCHAR(17),
+c1wins  VARCHAR(17),
+c2wins  VARCHAR(17)
 );

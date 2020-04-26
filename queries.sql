@@ -73,5 +73,25 @@ SELECT tregion AS region, COUNT(tname) AS num_players
     GROUP BY tregion
     ORDER BY num_players DESC
 
---What player wins the most when their character is at disadvantage?
---Which character performs the best against others on average?
+--List Matchups with the total fights played per matchup
+UPDATE Matchup as mu
+ SET c1wins =
+ (SELECT COUNT (*) as c1wins
+	FROM FightSingles as fights
+	WHERE fights.char1 = fights.fwinner AND fights.char1 = mu.c1name AND fights.char2 = mu.c2name
+	GROUP BY char1, char2, fwinner);
+	
+ UPDATE Matchup as mu
+ SET c2wins =
+ (SELECT COUNT (*) as c2wins
+	FROM FightSingles as fights
+	WHERE fights.char2 = fights.fwinner AND fights.char1 = mu.c1name AND fights.char2 = mu.c2name
+	GROUP BY char1, char2, fwinner);
+	
+SELECT *, SUM(c1wins + c2wins) as Total_Fights
+FROM 
+	(SELECT c1name, c2name, IFNULL(c1wins,0) as c1wins, IFNULL(c2wins,0) as c2wins
+	FROM Matchup
+	WHERE c1wins NOT NULL OR c2wins NOT NULL
+	GROUP BY c1name,c2name)
+GROUP BY c1name,c2name;
