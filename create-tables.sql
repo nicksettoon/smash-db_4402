@@ -1,3 +1,9 @@
+CREATE TABLE Tier
+(
+tierid INTEGER PRIMARY KEY,
+tiername VARCHAR(7)
+);
+
 CREATE TABLE Character
 (
 cname    VARCHAR(17) PRIMARY KEY,
@@ -11,7 +17,11 @@ walk_speed  REAL,
 init_dash   REAL,
 run_speed   REAL,
 fastest_OOS_option  INTEGER,
-grab_speed  INTEGER
+grab_speed  INTEGER,
+tierid  INTEGER,
+FOREIGN KEY (tierid)
+    REFERENCES Tier (tierid)
+    ON DELETE NO ACTION
 );
 
 CREATE TABLE Tournament

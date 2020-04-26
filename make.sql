@@ -3,8 +3,8 @@
 .read create-tables.sql
 
 --Import and create Character Table
-.import /home/nick/dev/smash-db_4402/csvs/character.csv ctemp
-INSERT INTO Character (cname,max_air_acceleration,air_speed,fall_speed,gravity,full_jump_height,weight,walk_speed,init_dash,run_speed,fastest_OOS_option,grab_speed) SELECT * FROM ctemp;
+.import csvs/character.csv ctemp
+INSERT INTO Character (cname,max_air_acceleration,air_speed,fall_speed,gravity,full_jump_height,weight,walk_speed,init_dash,run_speed,fastest_OOS_option,grab_speed,tierid) SELECT * FROM ctemp;
 
 --Import and create Tournament Table
 .import csvs/tournament.csv ttemp
@@ -25,6 +25,10 @@ INSERT INTO FightSingles (char1,char2,fwinner,stage,sid) SELECT * FROM ftemp;
 --Import and create PlayerTournament Table
 .import csvs/playerTournament.csv PTtemp
 INSERT INTO PlayerTournament (pname,tname) SELECT * FROM PTtemp;
+
+--Import and create Tier Table
+.import csvs/tier.csv temptiers
+INSERT INTO Tier (tiername) SELECT * FROM temptiers;
 
 --Fill Matchup Table
 INSERT INTO Matchup (c1name,c2name) SELECT c1.cname as Fighter, c2.cname as Opponent
@@ -59,3 +63,4 @@ DROP TABLE ptemp;
 DROP TABLE stemp;
 DROP TABLE ftemp;
 DROP TABLE PTtemp;
+DROP TABLE temptiers;
