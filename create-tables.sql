@@ -4,6 +4,21 @@ tierid INTEGER PRIMARY KEY,
 tiername VARCHAR(7)
 );
 
+CREATE TABLE Matchup
+(
+c1name  VARCHAR(17),
+c2name  VARCHAR(17),
+c1wins  VARCHAR(17),
+c2wins  VARCHAR(17),
+tratio    REAL,
+PRIMARY KEY (c1name,c2name),
+FOREIGN KEY (c1name)
+    REFERENCES Character (cname)
+    ON DELETE NO ACTION
+FOREIGN KEY (c2name)
+    REFERENCES Character (cname)
+);
+
 CREATE TABLE Character
 (
 cname    VARCHAR(17) PRIMARY KEY,
@@ -79,6 +94,9 @@ FOREIGN KEY (char2)
 FOREIGN KEY (fwinner)
     REFERENCES Character (cname)
     ON DELETE NO ACTION
+FOREIGN KEY (char1,char2)
+    REFERENCES Matchup (c1name,c2name)
+    ON DELETE NO ACTION
 );
 
 CREATE TABLE Player
@@ -98,12 +116,4 @@ tname   VARCHAR(50),
 PRIMARY KEY (pname, tname),
 FOREIGN KEY (pname)
     REFERENCES Player (pname)
-);
-
-CREATE TABLE Matchup
-(
-c1name  VARCHAR(17),
-c2name  VARCHAR(17),
-c1wins  VARCHAR(17),
-c2wins  VARCHAR(17)
 );

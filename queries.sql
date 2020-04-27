@@ -83,3 +83,8 @@ GROUP BY plyr2
 ORDER BY WinsAtDis DESC;
 
 --Which character performs the best against others on average?
+
+SELECT c1name, ROUND(AVG(tratio),2) as Avg_Tier_Ratio
+    FROM Matchup
+    Group BY c1name
+    ORDER BY Avg_Tier_Ratio ASC;
