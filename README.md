@@ -1,6 +1,8 @@
 # smash-db_4402
 Repo for semester project for Intro to Database Management Systems
+
 Project Objectives
+
 Esports is one of the most rapidly growing sports in the world right now. This form of 
 entertainment and competition expands across the globe, and the world’s best come together to 
 compete in epic battles and showcase their skills. One of the more popular of the different 
