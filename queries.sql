@@ -7,25 +7,26 @@ SELECT pname as Player, COUNT(*) as Tourneys
 --Rank matchups by occurances
 SELECT *, c1wins + c2wins as Total_Fights
     FROM Matchup
-    WHERE Total_Fights >= 1;
+    WHERE Total_Fights >= 1
+    ORDER BY Total_Fights DESC;
 
 --List players by number of fight wins.
 SELECT swinner AS name, COUNT(fid) AS fight_wins
     FROM FightSingles NATURAL INNER JOIN SetSingles
     GROUP BY swinner
-    ORDER BY fight_wins DESC
+    ORDER BY fight_wins DESC;
 
 --List region by number of players from that region.
 SELECT pregion AS region, COUNT(pname) AS num_players
     FROM Player
     GROUP BY pregion
-    ORDER BY num_players DESC
+    ORDER BY num_players DESC;
 
 --List region by number of tourneys in that region.
 SELECT tregion AS region, COUNT(tname) AS num_players
     FROM Tournament
     GROUP BY tregion
-    ORDER BY num_players DESC
+    ORDER BY num_players DESC;
 
 --COMPLEX--
 --Rank characters by total times played in all tournaments
@@ -70,7 +71,7 @@ Select plyr2 as Player, MIN(depth) as Round_Eliminated
     GROUP BY Player
     ORDER BY Round_Eliminated;
 
---Rank players by the number of fights won when their character is at disadvantage.
+--Rank players by the number of fights won when their character is at disadvantage 
 SELECT Player,SUM(Wins_At_Disadvantage) as Wins_At_Disadvantage
     FROM (SELECT plyr1 as Player, COUNT() as Wins_At_Disadvantage
             FROM(SELECT char1,char2,fwinner,plyr1,plyr2
