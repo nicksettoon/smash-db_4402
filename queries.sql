@@ -71,7 +71,6 @@ Select plyr2 as Player, MIN(depth) as Round_Eliminated
     GROUP BY Player
     ORDER BY Round_Eliminated;
 
-<<<<<<< HEAD
 --Rank players by the number of fights won when their character is at disadvantage?
 SELECT Player,SUM(Wins_At_Disadvantage) as Wins_At_Disadvantage
 	FROM (SELECT plyr1 as Player, COUNT() as Wins_At_Disadvantage
@@ -91,29 +90,6 @@ SELECT Player,SUM(Wins_At_Disadvantage) as Wins_At_Disadvantage
 			GROUP BY plyr2)
 	GROUP BY Player
 	ORDER BY Wins_At_Disadvantage DESC
-=======
---Rank players by the number of fights won when their character is at disadvantage 
-SELECT Player,SUM(Wins_At_Disadvantage) as Wins_At_Disadvantage
-    FROM (SELECT plyr1 as Player, COUNT() as Wins_At_Disadvantage
-            FROM(SELECT char1,char2,fwinner,plyr1,plyr2
-                    FROM FightSingles NATURAL JOIN SetSingles)
-            WHERE (SELECT tratio
-                    FROM Matchup
-                    WHERE c1name = char1 AND c2name = char2) > 1 AND char1 = fwinner
-            GROUP BY plyr1
-        UNION
-        SELECT plyr2 as Player, COUNT() as Wins_At_Disadvantage
-            FROM(SELECT char1,char2,fwinner,plyr1,plyr2
-                    FROM FightSingles NATURAL JOIN SetSingles)
-            WHERE (SELECT tratio
-                    FROM Matchup
-                    WHERE c1name = char2 AND c2name = char1) > 1 AND char2 = fwinner
-            GROUP BY plyr2)
-    GROUP BY Player
-    ORDER BY Wins_At_Disadvantage DESC
-
---Which character performs the best against others on average?
->>>>>>> a7fba752dfe473965d40a7e22589a28a42d30ab0
 
 --Show matchups with their character's tier next to the character and the matchup's ratio?
 SELECT c1name, adv_tier as c1_tier, c2name, t2.tiername as c2_tier, tratio
