@@ -23,10 +23,10 @@ SELECT pregion AS region, COUNT(pname) AS num_players
     ORDER BY num_players DESC;
 
 --List region by number of tourneys in that region.
-SELECT tregion AS region, COUNT(tname) AS num_players
+SELECT tregion AS region, COUNT(tname) AS num_tournaments
     FROM Tournament
     GROUP BY tregion
-    ORDER BY num_players DESC;
+    ORDER BY num_tournaments DESC;
 
 --COMPLEX--
 --Rank characters by total times played in all tournaments
