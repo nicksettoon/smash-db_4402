@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="/home/nick/dev/smash-db_4402/smash.db" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><current_tab id="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="95"/><column_width id="3" width="3570"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="Matchup"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Character" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="FightSingles" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="Matchup" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort><column index="1" mode="0"/></sort><column_widths><column index="1" value="106"/></column_widths><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="Player" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="PlayerTournament" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table></browse_table_settings></tab_browse><tab_sql><sql name="char-cross-prod">SELECT c1.cname as c1name, c2.cname as c2name
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="/home/nick/dev/smash-db_4402/smash.db" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><current_tab id="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="95"/><column_width id="3" width="3570"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="Tier"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Character" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort><column index="1" mode="1"/></sort><column_widths><column index="4" value="89"/></column_widths><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="FightSingles" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort><column index="6" mode="0"/></sort><column_widths><column index="5" value="190"/></column_widths><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="Matchup" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort><column index="1" mode="0"/></sort><column_widths><column index="1" value="106"/></column_widths><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="Player" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort><column index="2" mode="0"/></sort><column_widths><column index="2" value="196"/><column index="3" value="127"/></column_widths><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="PlayerTournament" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="SetSingles" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort><column index="1" mode="0"/></sort><column_widths><column index="1" value="67"/><column index="7" value="230"/></column_widths><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="Tier" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table></browse_table_settings></tab_browse><tab_sql><sql name="char-cross-prod">SELECT c1.cname as c1name, c2.cname as c2name
 FROM Character as c1, Character as c2;</sql><sql name="update-matchup"> UPDATE Matchup as mu
  SET c1wins =
  (SELECT COUNT (*) as c1wins
@@ -15,7 +15,7 @@ FROM Character as c1, Character as c2;</sql><sql name="update-matchup"> UPDATE M
 
 UPDATE Matchup as mu
  SET tratio =
-	(SELECT ROUND(c1.tierid*1.0/c2.tierid,2) as tratio
+	(SELECT ROUND(c1.tierid*1.0/c2.tierid,3) as tratio
 		FROM Character c1, Character c2
 		WHERE mu.c1name = c1.cname AND mu.c2name = c2.cname);
 
@@ -100,4 +100,29 @@ SELECT pname as Player, COUNT(*) as Tourneys
     ORDER BY Tourneys DESC;</sql><sql name="avg-tier-ratio">SELECT c1name,ROUND(AVG(tratio),2) as Avg_Tier_Ratio
 	FROM Matchup
 	Group BY c1name
-	ORDER BY Avg_Tier_Ratio ASC;</sql><current_tab id="11"/></tab_sql></sqlb_project>
+	ORDER BY Avg_Tier_Ratio ASC;</sql><sql name="SQL 16">SELECT Character, sum(Play_rate) as Total_Played
+    FROM (SELECT char1 as Character, COUNT(*) as Play_rate
+			FROM FightSingles NATURAL JOIN SetSingles NATURAL JOIN Tournament
+			GROUP BY char1
+	UNION
+		  SELECT char2 as Character, COUNT(*) as Play_rate
+			FROM FightSingles NATURAL JOIN SetSingles NATURAL JOIN Tournament
+    GROUP BY char2)
+GROUP BY Character
+ORDER BY Total_Played DESC;
+</sql><sql name="SQL 17">SELECT c1name, adv_tier as c1_tier, c2name, t2.tiername as c2_tier, tratio
+FROM (SELECT c1name, c2name, tratio, t1.tiername as adv_tier
+		FROM Matchup as mu INNER JOIN Character as char on mu.c1name = char.cname NATURAL JOIN Tier as t1) as view1 INNER JOIN Character as char2 on view1.c2name = char2.cname NATURAL JOIN Tier as t2
+WHERE tratio &lt; 1
+ORDER BY tratio;
+</sql><sql name="SQL 18">SELECT cname AS Char, tiername, Total_Played
+FROM (SELECT Character AS cname, sum(Play_rate) as Total_Played
+    FROM (SELECT char1 as Character, COUNT() as Play_rate
+			FROM FightSingles NATURAL JOIN SetSingles NATURAL JOIN Tournament
+			GROUP BY char1
+		  UNION
+		  SELECT char2 as Character, COUNT() as Play_rate
+		      FROM FightSingles NATURAL JOIN SetSingles NATURAL JOIN Tournament
+			  GROUP BY char2)
+GROUP BY Character
+ORDER BY Total_Played DESC) NATURAL JOIN Character NATURAL JOIN Tier;</sql><current_tab id="13"/></tab_sql></sqlb_project>

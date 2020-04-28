@@ -1,7 +1,7 @@
 CREATE TABLE Tier
 (
 tierid INTEGER PRIMARY KEY,
-tiername VARCHAR(7)
+tiername VARCHAR(7) NOT NULL
 );
 
 CREATE TABLE Matchup
@@ -14,7 +14,7 @@ tratio    REAL,
 PRIMARY KEY (c1name,c2name),
 FOREIGN KEY (c1name)
     REFERENCES Character (cname)
-    ON DELETE NO ACTION
+    ON DELETE NO ACTION,
 FOREIGN KEY (c2name)
     REFERENCES Character (cname)
 );
@@ -45,7 +45,7 @@ tname   VARCHAR(50) PRIMARY KEY,
 start_date   DATE,
 end_date     DATE,
 tregion      VARCHAR(50),
-twinner      VARCHAR(50),
+twinner      VARCHAR(50) NOT NULL,
 FOREIGN KEY (twinner)
     REFERENCES Player (pname)
     ON DELETE NO ACTION
@@ -62,13 +62,13 @@ bracket VARCHAR(7) NOT NULL,
 tname VARCHAR(50) NOT NULL,
 FOREIGN KEY (tname)
     REFERENCES Tournament (tname)
-    ON DELETE CASCADE
+    ON DELETE CASCADE,
 FOREIGN KEY (plyr1)
     REFERENCES Player (pname)
-    ON DELETE NO ACTION
+    ON DELETE NO ACTION,
 FOREIGN KEY (plyr2)
     REFERENCES Player (pname)
-    ON DELETE NO ACTION
+    ON DELETE NO ACTION,
 FOREIGN KEY (swinner)
     REFERENCES Player (pname)
     ON DELETE NO ACTION
@@ -84,16 +84,16 @@ stage VARCHAR(50),
 sid INTEGER,
 FOREIGN KEY (sid)
     REFERENCES SetSingles (sid)
-    ON DELETE CASCADE
+    ON DELETE CASCADE,
 FOREIGN KEY (char1)
     REFERENCES Character (cname)
-    ON DELETE NO ACTION
+    ON DELETE NO ACTION,
 FOREIGN KEY (char2)
     REFERENCES Character (cname)
-    ON DELETE NO ACTION
+    ON DELETE NO ACTION,
 FOREIGN KEY (fwinner)
     REFERENCES Character (cname)
-    ON DELETE NO ACTION
+    ON DELETE NO ACTION,
 FOREIGN KEY (char1,char2)
     REFERENCES Matchup (c1name,c2name)
     ON DELETE NO ACTION
@@ -115,5 +115,8 @@ pname   VARCHAR(7),
 tname   VARCHAR(50),
 PRIMARY KEY (pname, tname),
 FOREIGN KEY (pname)
-    REFERENCES Player (pname)
+    REFERENCES Player (pname),
+FOREIGN KEY (tname)
+    REFERENCES Player (tname)
+
 );

@@ -1,70 +1,70 @@
-plyr1,plyr2,depth,swinner,bracket,tname
-MkLeo,Samsora,1,MkLeo,1,Super Smash Con 2019
-MkLeo,Samsora,2,MkLeo,1,Super Smash Con 2019
-Tweek,Samsora,3,Samsora,1,Super Smash Con 2019
-Tweek,Marss,4,Tweek,1,Super Smash Con 2019
-MkLeo,Samsora,4,Samsora,1,Super Smash Con 2019
-MkLeo,Tweek,3,MkLeo,0,Super Smash Con 2019
-MkLeo,Marss,4,MkLeo,0,Super Smash Con 2019
-Maister,Marss,5,Marss,0,Super Smash Con 2019
-MkLeo,Nairo,5,MkLeo,0,Super Smash Con 2019
-Maister,Light,6,Maister,0,Super Smash Con 2019
-Lui$,Nairo,6,Nairo,0,Super Smash Con 2019
-MkLeo,VoiD,1,MkLeo,1,GENESIS 6
-MkLeo,VoiD,2,MkLeo,1,GENESIS 6
-Samsora,VoiD,3,VoiD,1,GENESIS 6
-zackray,VoiD,4,VoiD,1,GENESIS 6
-MkLeo,Samsora,4,Samsora,1,GENESIS 6
-MkLeo,Samsora,3,MkLeo,0,GENESIS 6
-MkLeo,Dabuz,4,MkLeo,0,GENESIS 6
-MkLeo,Light,5,MkLeo,0,GENESIS 6
-zackray,Dabuz,5,Dabuz,0,GENESIS 6
-ESAM,Light,6,Light,0,GENESIS 6
-Cosmos,Dabuz,6,Dabuz,0,GENESIS 6
-MkLeo,Samsora,1,MkLeo,1,Smash 'N' Splash 5
-MkLeo,Ally,2,MkLeo,1,Smash 'N' Splash 5
-VoiD,Ally,3,Ally,1,Smash 'N' Splash 5
-MkLeo,Marss,3,MkLeo,1,Smash 'N' Splash 5
-Samsora,Ally,2,Samsora,0,Smash 'N' Splash 5
-Samsora,Marss,3,Samsora,0,Smash 'N' Splash 5
-Samsora,VoiD,4,Samsora,0,Smash 'N' Splash 5
-Marss,Dabuz,4,Marss,0,Smash 'N' Splash 5
-MkLeo,Tweek,1,Tweek,1,Frostbite 2019
-MkLeo,Tweek,2,Tweek,1,Frostbite 2019
-MkLeo,Myran,3,MkLeo,1,Frostbite 2019
-Cosmos,Tweek,3,Tweek,1,Frostbite 2019
-MkLeo,Myran,2,MkLeo,0,Frostbite 2019
-Shuton,Myran,3,Myran,0,Frostbite 2019
-Shuton,Cosmos,4,Shuton,0,Frostbite 2019
-Light,Myran,4,Myran,0,Frostbite 2019
-Nairo,Shuton,5,Shuton,0,Frostbite 2019
-Light,MVD,5,Light,0,Frostbite 2019
-zackray,Dabuz,1,zackray,1,The Big House 9
-zackray,Dabuz,2,zackray,1,The Big House 9
-Maister,Dabuz,3,Dabuz,1,The Big House 9
-Nairo,Dabuz,4,Dabuz,1,The Big House 9
-zackray,Maister,4,Maister,1,The Big House 9
-zackray,Maister,3,zackray,0,The Big House 9
-zackray,Nairo,4,zackray,0,The Big House 9
-Samsora,Nairo,5,Nairo,0,The Big House 9
-zackray,Tweek,5,zackray,0,The Big House 9
-Samsora,RFang,6,Samsora,0,The Big House 9
-Shuton,Tweek,6,Tweek,0,The Big House 9
-MkLeo,Samsora,1,Samsora,1,Shine 2019
-MkLeo,Samsora,2,MkLeo,1,Shine 2019
-MkLeo,Samsora,3,Samsora,1,Shine 2019
-MkLeo,Marss,4,MkLeo,1,Shine 2019
-Dabuz,Samsora,4,Samsora,1,Shine 2019
-MkLeo,Nairo,3,MkLeo,0,Shine 2019
-Marss,Nairo,4,Nairo,0,Shine 2019
-Marss,Dark Wizzy,5,Marss,0,Shine 2019
-Dabuz,Nairo,5,Nairo,0,Shine 2019
-Raffi-X,Dark Wizzy,6,Dark Wizzy,0,Shine 2019
-Tweek,Nairo,6,Nairo,0,Shine 2019
-Jakal,Dark Wizzy,7,Dark Wizzy,0,Shine 2019
-Blacktwins13,Raffi-X,7,Raffi-X,0,Shine 2019
-Nairo,LeoN,7,Nairo,0,Shine 2019
-ESAM,Tweek,7,Tweek,0,Shine 2019
+plyr1,plyr2,depth,swinner,bracket_type,tname
+MkLeo,Samsora,1,MkLeo,Winners,Super Smash Con 2019
+MkLeo,Samsora,2,MkLeo,Winners,Super Smash Con 2019
+Tweek,Samsora,3,Samsora,Winners,Super Smash Con 2019
+Tweek,Marss,4,Tweek,Winners,Super Smash Con 2019
+MkLeo,Samsora,4,Samsora,Winners,Super Smash Con 2019
+MkLeo,Tweek,3,MkLeo,Losers,Super Smash Con 2019
+MkLeo,Marss,4,MkLeo,Losers,Super Smash Con 2019
+Maister,Marss,5,Marss,Losers,Super Smash Con 2019
+MkLeo,Nairo,5,MkLeo,Losers,Super Smash Con 2019
+Maister,Light,6,Maister,Losers,Super Smash Con 2019
+Lui$,Nairo,6,Nairo,Losers,Super Smash Con 2019
+MkLeo,VoiD,1,MkLeo,Winners,GENESIS 6
+MkLeo,VoiD,2,MkLeo,Winners,GENESIS 6
+Samsora,VoiD,3,VoiD,Winners,GENESIS 6
+zackray,VoiD,4,VoiD,Winners,GENESIS 6
+MkLeo,Samsora,4,Samsora,Winners,GENESIS 6
+MkLeo,Samsora,3,MkLeo,Losers,GENESIS 6
+MkLeo,Dabuz,4,MkLeo,Losers,GENESIS 6
+MkLeo,Light,5,MkLeo,Losers,GENESIS 6
+zackray,Dabuz,5,Dabuz,Losers,GENESIS 6
+ESAM,Light,6,Light,Losers,GENESIS 6
+Cosmos,Dabuz,6,Dabuz,Losers,GENESIS 6
+MkLeo,Samsora,1,MkLeo,Winners,Smash 'N' Splash 5
+MkLeo,Ally,2,MkLeo,Winners,Smash 'N' Splash 5
+VoiD,Ally,3,Ally,Winners,Smash 'N' Splash 5
+MkLeo,Marss,3,MkLeo,Winners,Smash 'N' Splash 5
+Samsora,Ally,2,Samsora,Losers,Smash 'N' Splash 5
+Samsora,Marss,3,Samsora,Losers,Smash 'N' Splash 5
+Samsora,VoiD,4,Samsora,Losers,Smash 'N' Splash 5
+Marss,Dabuz,4,Marss,Losers,Smash 'N' Splash 5
+MkLeo,Tweek,1,Tweek,Winners,Frostbite 2019
+MkLeo,Tweek,2,Tweek,Winners,Frostbite 2019
+MkLeo,Myran,3,MkLeo,Winners,Frostbite 2019
+Cosmos,Tweek,3,Tweek,Winners,Frostbite 2019
+MkLeo,Myran,2,MkLeo,Losers,Frostbite 2019
+Shuton,Myran,3,Myran,Losers,Frostbite 2019
+Shuton,Cosmos,4,Shuton,Losers,Frostbite 2019
+Light,Myran,4,Myran,Losers,Frostbite 2019
+Nairo,Shuton,5,Shuton,Losers,Frostbite 2019
+Light,MVD,5,Light,Losers,Frostbite 2019
+zackray,Dabuz,1,zackray,Winners,The Big House 9
+zackray,Dabuz,2,zackray,Winners,The Big House 9
+Maister,Dabuz,3,Dabuz,Winners,The Big House 9
+Nairo,Dabuz,4,Dabuz,Winners,The Big House 9
+zackray,Maister,4,Maister,Winners,The Big House 9
+zackray,Maister,3,zackray,Losers,The Big House 9
+zackray,Nairo,4,zackray,Losers,The Big House 9
+Samsora,Nairo,5,Nairo,Losers,The Big House 9
+zackray,Tweek,5,zackray,Losers,The Big House 9
+Samsora,RFang,6,Samsora,Losers,The Big House 9
+Shuton,Tweek,6,Tweek,Losers,The Big House 9
+MkLeo,Samsora,1,Samsora,Winners,Shine 2019
+MkLeo,Samsora,2,MkLeo,Winners,Shine 2019
+MkLeo,Samsora,3,Samsora,Winners,Shine 2019
+MkLeo,Marss,4,MkLeo,Winners,Shine 2019
+Dabuz,Samsora,4,Samsora,Winners,Shine 2019
+MkLeo,Nairo,3,MkLeo,Losers,Shine 2019
+Marss,Nairo,4,Nairo,Losers,Shine 2019
+Marss,Dark Wizzy,5,Marss,Losers,Shine 2019
+Dabuz,Nairo,5,Nairo,Losers,Shine 2019
+Raffi-X,Dark Wizzy,6,Dark Wizzy,Losers,Shine 2019
+Tweek,Nairo,6,Nairo,Losers,Shine 2019
+Jakal,Dark Wizzy,7,Dark Wizzy,Losers,Shine 2019
+Blacktwins13,Raffi-X,7,Raffi-X,Losers,Shine 2019
+Nairo,LeoN,7,Nairo,Losers,Shine 2019
+ESAM,Tweek,7,Tweek,Losers,Shine 2019
 MkLeo,Tweek,1,MkLeo,Winners,EVO 2019
 MkLeo,Tweek,2,MkLeo,Winners,EVO 2019
 Glutonny,Tweek,3,Tweek,Winners,EVO 2019
