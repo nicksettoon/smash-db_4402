@@ -71,20 +71,28 @@ Select plyr2 as Player, MIN(depth) as Round_Eliminated
     ORDER BY Round_Eliminated;
 
 --Rank players by the number of fights won when their character is at disadvantage?
-SELECT plyr1 as Player, COUNT(*) as "Wins At Disadvantage"
-FROM(SELECT char1,char2,fwinner,plyr1,plyr2 FROM FightSingles NATURAL JOIN SetSingles)
-WHERE ((SELECT tierid FROM Character WHERE cname = char1) - (SELECT tierid FROM Character WHERE cname = char2)) > 0
-GROUP BY plyr1
-UNION
-SELECT plyr2 as Player, COUNT(*) as WinsAtDis
-FROM(SELECT char1,char2,fwinner,plyr1,plyr2 FROM FightSingles NATURAL JOIN SetSingles)
-WHERE ((SELECT tierid FROM Character WHERE cname = char1) - (SELECT tierid FROM Character WHERE cname = char2)) < 0
-GROUP BY plyr2
-ORDER BY WinsAtDis DESC;
+SELECT Player,SUM(Wins_At_Disadvantage) as Wins_At_Disadvantage
+	FROM (SELECT plyr1 as Player, COUNT() as Wins_At_Disadvantage
+			FROM(SELECT char1,char2,fwinner,plyr1,plyr2
+					FROM FightSingles NATURAL JOIN SetSingles)
+			WHERE (SELECT tratio
+					FROM Matchup
+					WHERE c1name = char1 AND c2name = char2) > 1 AND char1 = fwinner
+			GROUP BY plyr1
+		UNION
+		SELECT plyr2 as Player, COUNT() as Wins_At_Disadvantage
+			FROM(SELECT char1,char2,fwinner,plyr1,plyr2
+					FROM FightSingles NATURAL JOIN SetSingles)
+			WHERE (SELECT tratio
+					FROM Matchup
+					WHERE c1name = char2 AND c2name = char1) > 1 AND char2 = fwinner
+			GROUP BY plyr2)
+	GROUP BY Player
+	ORDER BY Wins_At_Disadvantage DESC
 
---Which character performs the best against others on average?
-
-SELECT c1name, ROUND(AVG(tratio),2) as Avg_Tier_Ratio
-    FROM Matchup
-    Group BY c1name
-    ORDER BY Avg_Tier_Ratio ASC;
+--Show matchups with their character's tier next to the character and the matchup's ratio?
+SELECT c1name, adv_tier as c1_tier, c2name, t2.tiername as c2_tier, tratio
+FROM (SELECT c1name, c2name, tratio, t1.tiername as adv_tier
+		FROM Matchup as mu INNER JOIN Character as char on mu.c1name = char.cname NATURAL JOIN Tier as t1) as view1 INNER JOIN Character as char2 on view1.c2name = char2.cname NATURAL JOIN Tier as t2
+WHERE tratio < 1
+ORDER BY tratio;
