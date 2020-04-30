@@ -1,33 +1,31 @@
 .open smash.db
 .mode csv
-.read create-tables.sql
-
 --Import and create Character Table
-.import csvs/character.csv ctemp
+.import ./csvs/character.csv ctemp
 INSERT INTO Character (cname,max_air_acceleration,air_speed,fall_speed,gravity,full_jump_height,weight,walk_speed,init_dash,run_speed,fastest_OOS_option,grab_speed,tierid) SELECT * FROM ctemp;
 
 --Import and create Tournament Table
-.import csvs/tournament.csv ttemp
+.import ./csvs/tournament.csv ttemp
 INSERT INTO Tournament (tname,start_date,end_date,tregion,twinner) SELECT * FROM ttemp;
 
 --Import and create Player Table
-.import csvs/player.csv ptemp
+.import ./csvs/player.csv ptemp
 INSERT INTO Player (pname,main,pregion) SELECT * FROM ptemp;
 
 --Import and create SetSingles Table
-.import csvs/setSingles.csv stemp
+.import ./csvs/setSingles.csv stemp
 INSERT INTO SetSingles (plyr1,plyr2,depth,swinner,bracket,tname) SELECT * FROM stemp;
 
 --Import and create FightSingles Table
-.import csvs/fightSingles.csv ftemp
+.import ./csvs/fightSingles.csv ftemp
 INSERT INTO FightSingles (char1,char2,fwinner,stage,sid) SELECT * FROM ftemp;
 
 --Import and create PlayerTournament Table
-.import csvs/playerTournament.csv PTtemp
+.import ./csvs/playerTournament.csv PTtemp
 INSERT INTO PlayerTournament (pname,tname) SELECT * FROM PTtemp;
 
 --Import and create Tier Table
-.import csvs/tier.csv temptiers
+.import ./csvs/tier.csv temptiers
 INSERT INTO Tier (tiername) SELECT * FROM temptiers;
 
 --Fill Matchup Table
@@ -63,4 +61,11 @@ UPDATE Matchup
     SET c2wins = 0
     WHERE c2wins IS NULL;
 
-.read remove-tables.sql
+-- Import cleanup
+DROP TABLE ctemp;
+DROP TABLE ttemp;
+DROP TABLE ptemp;
+DROP TABLE stemp;
+DROP TABLE ftemp;
+DROP TABLE PTtemp;
+DROP TABLE temptiers;

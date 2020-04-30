@@ -1,128 +1,95 @@
-<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="/home/nick/dev/smash-db_4402/smash.db" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><current_tab id="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="95"/><column_width id="3" width="3570"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="Tier"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Character" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort><column index="1" mode="1"/></sort><column_widths><column index="4" value="89"/></column_widths><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="FightSingles" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort><column index="6" mode="0"/></sort><column_widths><column index="5" value="190"/></column_widths><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="Matchup" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort><column index="1" mode="0"/></sort><column_widths><column index="1" value="106"/></column_widths><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="Player" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort><column index="2" mode="0"/></sort><column_widths><column index="2" value="196"/><column index="3" value="127"/></column_widths><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="PlayerTournament" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="SetSingles" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort><column index="1" mode="0"/></sort><column_widths><column index="1" value="67"/><column index="7" value="230"/></column_widths><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="Tier" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table></browse_table_settings></tab_browse><tab_sql><sql name="char-cross-prod">SELECT c1.cname as c1name, c2.cname as c2name
-FROM Character as c1, Character as c2;</sql><sql name="update-matchup"> UPDATE Matchup as mu
- SET c1wins =
- (SELECT COUNT (*) as c1wins
-	FROM FightSingles as fights
-	WHERE fights.char1 = fights.fwinner AND fights.char1 = mu.c1name AND fights.char2 = mu.c2name
-	GROUP BY char1, char2, fwinner);
-	
- UPDATE Matchup as mu
- SET c2wins =
- (SELECT COUNT (*) as c2wins
-	FROM FightSingles as fights
-	WHERE fights.char2 = fights.fwinner AND fights.char1 = mu.c1name AND fights.char2 = mu.c2name
-	GROUP BY char1, char2, fwinner);
-
-UPDATE Matchup as mu
- SET tratio =
-	(SELECT ROUND(c1.tierid*1.0/c2.tierid,3) as tratio
-		FROM Character c1, Character c2
-		WHERE mu.c1name = c1.cname AND mu.c2name = c2.cname);
-
-UPDATE Matchup
-    SET c1wins = 0
-    WHERE c1wins IS NULL;
-
-UPDATE Matchup
-    SET c2wins = 0
-    WHERE c2wins IS NULL;</sql><sql name="fights-c1wins">SELECT char1, char2, fwinner, COUNT (*) as wins
-FROM FightSingles
-WHERE char1 = fwinner
-GROUP BY char1, char2, fwinner;</sql><sql name="fights-c2wins">SELECT char1, char2, fwinner, COUNT (*) as wins
-FROM FightSingles
-WHERE char2 = fwinner
-GROUP BY char1, char2, fwinner;</sql><sql name="matchup-occurances">SELECT *, c1wins + c2wins as occurances
-FROM Matchup
-WHERE occurances &gt;= 1;
-</sql><sql name="sum-fights">SELECT SUM(occurances) as total_fights
-FROM
-(SELECT char1, char2, COUNT (*) as occurances
-FROM FightSingles
-GROUP BY char1, char2);</sql><sql name="round-elim">--Rank players by the depth they were eliminated at across all tournaments.
-SELECT plyr1 as Player, MIN(depth) as Round_Eliminated
-FROM SetSingles NATURAL JOIN Tournament
-GROUP BY Player
-UNION
-Select plyr2 as Player, MIN(depth) as Round_Eliminated
-FROM SetSingles NATURAL JOIN Tournament
-GROUP BY Player
-ORDER BY Round_Eliminated;</sql><sql name="all-set-wins">--Rank players by number of set wins for all tournaments
-SELECT Plyr, IFNULL(Set_wins,0) as Set_wins
-FROM (SELECT Plyr
-		FROM (SELECT plyr1 as Plyr
-				FROM SetSingles
-				GROUP BY plyr1
-			  UNION
-			  SELECT plyr2 as Plyr
-				FROM SetSingles
-				GROUP BY plyr2
-			  )
-	  )
-LEFT JOIN
-	(SELECT swinner, COUNT(*) as Set_wins
-		FROM SetSingles
-		GROUP BY swinner) on Plyr = swinner
-ORDER BY Set_wins DESC, Plyr ASC;</sql><sql name="tnmt-set-wins">--Rank players by number of set wins for a given tournament
-SELECT Plyr, IFNULL(Set_wins,0) as Set_wins
-FROM (SELECT Plyr
-		FROM (SELECT plyr1 as Plyr
-				FROM SetSingles NATURAL JOIN Tournament
-				WHERE tname = &quot;Frostbite 2019&quot;
-				GROUP BY plyr1
-			  UNION
-			  SELECT plyr2 as Plyr
-				FROM SetSingles NATURAL JOIN Tournament
-				WHERE tname = &quot;Frostbite 2019&quot;
-				GROUP BY plyr2
-			  )
-	  )
-LEFT JOIN
-	(SELECT swinner, COUNT(*) as Set_wins
-		FROM SetSingles NATURAL JOIN Tournament
-		WHERE tname = &quot;Frostbite 2019&quot;
-		GROUP BY swinner) on Plyr = swinner
-ORDER BY Set_wins DESC, Plyr ASC;</sql><sql name="char-times-played">--Rank characters by total times played in Frostbite 2019.
-SELECT Character, sum(Play_rate) as Total_played
-FROM (SELECT char1 as Character, COUNT(*) as Play_rate
-    FROM FightSingles NATURAL JOIN SetSingles NATURAL JOIN Tournament
-	WHERE tname = &quot;Frostbite 2019&quot;
-    GROUP BY char1
-UNION
-SELECT char2 as Character, COUNT(*) as Play_rate
-    FROM FightSingles NATURAL JOIN SetSingles NATURAL JOIN Tournament
-	WHERE tname = &quot;Frostbite 2019&quot;
-    GROUP BY char2)
-GROUP BY Character
-ORDER BY Total_Played DESC;</sql><sql name="plyr-tnmt-attendance">--Rank players by tournament attendance.
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="/home/nick/dev/smash-db_4402/smash.db" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><current_tab id="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="95"/><column_width id="3" width="3585"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="Tier"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Character" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort><column index="1" mode="1"/></sort><column_widths><column index="4" value="89"/></column_widths><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="FightSingles" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort><column index="6" mode="0"/></sort><column_widths><column index="5" value="190"/></column_widths><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="Matchup" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort><column index="1" mode="0"/></sort><column_widths><column index="1" value="106"/></column_widths><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="Player" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort><column index="2" mode="0"/></sort><column_widths><column index="2" value="196"/><column index="3" value="127"/></column_widths><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="PlayerTournament" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="SetSingles" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort><column index="1" mode="0"/></sort><column_widths><column index="1" value="67"/><column index="7" value="230"/></column_widths><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="Tier" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table></browse_table_settings></tab_browse><tab_sql><sql name="q1-tnmt-attend">--Rank players by tournament attendance.
 SELECT pname as Player, COUNT(*) as Tourneys
     FROM PlayerTournament NATURAL JOIN Player
     GROUP BY pname
-    ORDER BY Tourneys DESC;</sql><sql name="avg-tier-ratio">SELECT c1name,ROUND(AVG(tratio),2) as Avg_Tier_Ratio
-	FROM Matchup
-	Group BY c1name
-	ORDER BY Avg_Tier_Ratio ASC;</sql><sql name="SQL 16">SELECT Character, sum(Play_rate) as Total_Played
-    FROM (SELECT char1 as Character, COUNT(*) as Play_rate
-			FROM FightSingles NATURAL JOIN SetSingles NATURAL JOIN Tournament
-			GROUP BY char1
-	UNION
-		  SELECT char2 as Character, COUNT(*) as Play_rate
-			FROM FightSingles NATURAL JOIN SetSingles NATURAL JOIN Tournament
-    GROUP BY char2)
-GROUP BY Character
-ORDER BY Total_Played DESC;
-</sql><sql name="SQL 17">SELECT c1name, adv_tier as c1_tier, c2name, t2.tiername as c2_tier, tratio
+    ORDER BY Tourneys DESC;</sql><sql name="q2-mu-count">--Rank matchups by number of occurances
+SELECT *, c1wins + c2wins as Total_Fights
+    FROM Matchup
+    WHERE Total_Fights &gt;= 1
+	ORDER BY Total_Fights DESC;</sql><sql name="q3-all-plyr-fight-wins">--Rank players by number of fights won
+SELECT swinner AS name, COUNT(fid) AS fight_wins
+    FROM FightSingles NATURAL JOIN SetSingles
+    GROUP BY swinner
+    ORDER BY fight_wins DESC;
+</sql><sql name="q4-plyr-per-region">--List regions by number of players from that region
+SELECT pregion AS region, COUNT(pname) AS num_players
+    FROM Player
+    GROUP BY pregion
+    HAVING num_players &gt;= 3
+	ORDER BY num_players DESC;</sql><sql name="q5-tnmt-per-region">--List regions by number of tournaments held in that region
+SELECT tregion AS region, COUNT(tname) AS  Num_Tournaments
+    FROM Tournament
+    GROUP BY tregion
+    ORDER BY Num_Tournaments DESC;</sql><sql name="q6-char-fights-count">--Rank characters with their tier by number of fights they've been in.
+SELECT cname AS Character, tiername as Tier, Total_Played
+	FROM (SELECT Character AS cname, sum(Play_rate) as Total_Played
+		FROM (SELECT char1 as Character, COUNT() as Play_rate
+				FROM FightSingles NATURAL JOIN SetSingles
+				GROUP BY char1
+			  UNION
+			  SELECT char2 as Character, COUNT() as Play_rate
+				  FROM FightSingles NATURAL JOIN SetSingles
+				  GROUP BY char2)
+	GROUP BY Character
+	ORDER BY Total_Played DESC) NATURAL JOIN Character NATURAL JOIN Tier;
+</sql><sql name="q7-all-set-wins">--Rank players by number of set wins for all tournaments
+SELECT Plyr, IFNULL(Set_wins,0) as Set_wins
+	FROM (SELECT Plyr
+			FROM (SELECT plyr1 as Plyr
+					FROM SetSingles
+					GROUP BY plyr1
+				  UNION
+				  SELECT plyr2 as Plyr
+					FROM SetSingles
+					GROUP BY plyr2
+				  )
+		  ) LEFT JOIN
+		(SELECT swinner, COUNT(*) as Set_wins
+			FROM SetSingles
+			GROUP BY swinner) on Plyr = swinner
+	ORDER BY Set_wins DESC, Plyr ASC;</sql><sql name="q8-round-elim">--Rank players by the depth they were eliminated at across all tournaments.
+SELECT plyr1 as Player, MIN(depth) as Round_Eliminated
+	FROM SetSingles NATURAL JOIN Tournament
+	GROUP BY Player
+UNION
+Select plyr2 as Player, MIN(depth) as Round_Eliminated
+	FROM SetSingles NATURAL JOIN Tournament
+	GROUP BY Player
+	ORDER BY Round_Eliminated;</sql><sql name="q9-wins-at-disadv">--List players by the number of sets they have when their character is at a disadvantage
+SELECT Player, 
+    SUM(Wins_At_Disadvantage) as  
+    Wins_At_Disadvantage
+    FROM (SELECT plyr1 as Player,  
+    COUNT() as Wins_At_Disadvantage
+            FROM(SELECT char1, char2,  
+            fwinner, plyr1, plyr2
+                    FROM FightSingles NATURAL 
+                    JOIN SetSingles)
+            WHERE (SELECT tratio
+                    	FROM Matchup
+                    	WHERE c1name = char1 AND   
+                         c2name = char2) &gt; 1 
+                                       AND char1 = fwinner
+            GROUP BY plyr1
+            UNION
+            SELECT plyr2 as Player, COUNT() as  
+            Wins_At_Disadvantage
+            FROM(SELECT char1, char2,  
+            fwinner, plyr1, plyr2
+                    	FROM FightSingles                
+                        NATURAL JOIN SetSingles)
+            WHERE (SELECT tratio
+                    	FROM Matchup
+                    	WHERE c1name = char2 AND  
+                        c2name = char1) &gt; 1 
+                                      AND char2 = fwinner
+            GROUP BY plyr2)
+GROUP BY Player
+ORDER BY Wins_At_Disadvantage DESC;
+</sql><sql name="q10-matchup-tiers">--List matchups with their character's tier and the tier ratio
+SELECT c1name, adv_tier as c1_tier, c2name, t2.tiername as c2_tier, tratio
 FROM (SELECT c1name, c2name, tratio, t1.tiername as adv_tier
 		FROM Matchup as mu INNER JOIN Character as char on mu.c1name = char.cname NATURAL JOIN Tier as t1) as view1 INNER JOIN Character as char2 on view1.c2name = char2.cname NATURAL JOIN Tier as t2
 WHERE tratio &lt; 1
 ORDER BY tratio;
-</sql><sql name="SQL 18">SELECT cname AS Char, tiername, Total_Played
-FROM (SELECT Character AS cname, sum(Play_rate) as Total_Played
-    FROM (SELECT char1 as Character, COUNT() as Play_rate
-			FROM FightSingles NATURAL JOIN SetSingles NATURAL JOIN Tournament
-			GROUP BY char1
-		  UNION
-		  SELECT char2 as Character, COUNT() as Play_rate
-		      FROM FightSingles NATURAL JOIN SetSingles NATURAL JOIN Tournament
-			  GROUP BY char2)
-GROUP BY Character
-ORDER BY Total_Played DESC) NATURAL JOIN Character NATURAL JOIN Tier;</sql><current_tab id="13"/></tab_sql></sqlb_project>
+</sql><current_tab id="5"/></tab_sql></sqlb_project>

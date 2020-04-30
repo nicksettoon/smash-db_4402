@@ -1,3 +1,5 @@
+.open smash.db
+
 CREATE TABLE Tier
 (
 tierid INTEGER PRIMARY KEY,

@@ -1,3 +1,4 @@
+.open smash.db
 --"SIMPLE"--
 --List players ranked by tournament attendance.
 SELECT pname as Player, COUNT(*) as Tourneys

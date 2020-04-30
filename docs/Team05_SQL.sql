@@ -1,11 +1,11 @@
-.open smash.db
-DROP TABLE ctemp;
-DROP TABLE ttemp;
-DROP TABLE ptemp;
-DROP TABLE stemp;
-DROP TABLE ftemp;
-DROP TABLE PTtemp;
-DROP TABLE temptiers;
+--DROP TABLE COMMANDS--
+-- DROP TABLE ctemp;
+-- DROP TABLE ttemp;
+-- DROP TABLE ptemp;
+-- DROP TABLE stemp;
+-- DROP TABLE ftemp;
+-- DROP TABLE PTtemp;
+-- DROP TABLE temptiers;
 
 -- DROP TABLE Character;
 -- DROP TABLE Tournament;
@@ -17,7 +17,7 @@ DROP TABLE temptiers;
 -- DROP TABLE Matchup;
 
 
---Create Tables
+--CREATE TABLE COMMANDS--
 CREATE TABLE Tier
 (
 tierid INTEGER PRIMARY KEY,
@@ -141,9 +141,7 @@ FOREIGN KEY (tname)
 
 );
 
-.mode csv
-.read create-tables.sql
-
+--IMPORT AND UPDATE COMMANDS--
 --Import and create Character Table
 .import csvs/character.csv ctemp
 INSERT INTO Character (cname,max_air_acceleration,air_speed,fall_speed,gravity,full_jump_height,weight,walk_speed,init_dash,run_speed,fastest_OOS_option,grab_speed,tierid) SELECT * FROM ctemp;
@@ -205,8 +203,8 @@ UPDATE Matchup
     SET c2wins = 0
     WHERE c2wins IS NULL;
 
---Queries
 
+--QUERIES
 --"SIMPLE"--
 --List players ranked by tournament attendance.
 SELECT pname as Player, COUNT(*) as Tourneys
@@ -237,7 +235,7 @@ SELECT tregion AS region, COUNT(tname) AS num_tournaments
     GROUP BY tregion
     ORDER BY num_tournaments DESC;
 
---COMPLEX--
+--"COMPLEX"--
 --Rank characters by total times played in all tournaments
 SELECT Character, sum(Play_rate) as Total_Played
 FROM (SELECT char1 as Character, COUNT(*) as Play_rate
@@ -272,35 +270,47 @@ ORDER BY Set_wins DESC, Plyr ASC;
 
 --Rank players by the depth they were eliminated at across all tournaments.
 SELECT plyr1 as Player, MIN(depth) as Round_Eliminated
-    FROM SetSingles NATURAL JOIN Tournament
-    GROUP BY Player
+	FROM SetSingles NATURAL JOIN Tournament
+	GROUP BY Player
 UNION
 Select plyr2 as Player, MIN(depth) as Round_Eliminated
-    FROM SetSingles NATURAL JOIN Tournament
-    GROUP BY Player
-    ORDER BY Round_Eliminated;
-
---Rank players by the number of fights won when their character is at disadvantage?
-SELECT Player,SUM(Wins_At_Disadvantage) as Wins_At_Disadvantage
-	FROM (SELECT plyr1 as Player, COUNT() as Wins_At_Disadvantage
-			FROM(SELECT char1,char2,fwinner,plyr1,plyr2
-					FROM FightSingles NATURAL JOIN SetSingles)
-			WHERE (SELECT tratio
-					FROM Matchup
-					WHERE c1name = char1 AND c2name = char2) > 1 AND char1 = fwinner
-			GROUP BY plyr1
-		UNION
-		SELECT plyr2 as Player, COUNT() as Wins_At_Disadvantage
-			FROM(SELECT char1,char2,fwinner,plyr1,plyr2
-					FROM FightSingles NATURAL JOIN SetSingles)
-			WHERE (SELECT tratio
-					FROM Matchup
-					WHERE c1name = char2 AND c2name = char1) > 1 AND char2 = fwinner
-			GROUP BY plyr2)
+	FROM SetSingles NATURAL JOIN Tournament
 	GROUP BY Player
-	ORDER BY Wins_At_Disadvantage DESC
+	ORDER BY Round_Eliminated;
 
---Show matchups with their character's tier next to the character and the matchup's ratio?
+--List players by the number of sets they have when their character is at a disadvantage
+SELECT Player, 
+    SUM(Wins_At_Disadvantage) as  
+    Wins_At_Disadvantage
+    FROM (SELECT plyr1 as Player,  
+    COUNT() as Wins_At_Disadvantage
+            FROM(SELECT char1, char2,  
+            fwinner, plyr1, plyr2
+                    FROM FightSingles NATURAL 
+                    JOIN SetSingles)
+            WHERE (SELECT tratio
+                    	FROM Matchup
+                    	WHERE c1name = char1 AND   
+                         c2name = char2) > 1 
+                                       AND char1 = fwinner
+            GROUP BY plyr1
+            UNION
+            SELECT plyr2 as Player, COUNT() as  
+            Wins_At_Disadvantage
+            FROM(SELECT char1, char2,  
+            fwinner, plyr1, plyr2
+                    	FROM FightSingles                
+                        NATURAL JOIN SetSingles)
+            WHERE (SELECT tratio
+                    	FROM Matchup
+                    	WHERE c1name = char2 AND  
+                        c2name = char1) > 1 
+                                      AND char2 = fwinner
+            GROUP BY plyr2)
+GROUP BY Player
+ORDER BY Wins_At_Disadvantage DESC;
+
+--List matchups with their character's tier and the tier ratio
 SELECT c1name, adv_tier as c1_tier, c2name, t2.tiername as c2_tier, tratio
 FROM (SELECT c1name, c2name, tratio, t1.tiername as adv_tier
 		FROM Matchup as mu INNER JOIN Character as char on mu.c1name = char.cname NATURAL JOIN Tier as t1) as view1 INNER JOIN Character as char2 on view1.c2name = char2.cname NATURAL JOIN Tier as t2
